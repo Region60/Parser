@@ -3,6 +3,7 @@ const app = express();
 const exphbs = require('express-handlebars');
 const needle = require('needle');
 const tress = require('tress')
+const cheerio = require('cheerio')
 
 const hbs = exphbs.create({
     defaultLayout:'main',
@@ -21,12 +22,20 @@ res.render('index')
 
 
 let URL = 'https://www.avito.ru/pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
+let result = []
 
 needle.get(URL, function(err, res){
-    if (err) throw err;
-    console.log(res.body);
-    console.log(res.statusCode);
-});
+    if (err) throw err
+
+    let $ = cheerio.load(res.body)
+    let a = $('.snippet-horizontal   item item_table clearfix js-catalog-item-enum item-with-contact js-item-extended').contents()
+    console.log (a)
+
+    /*console.log(res.body);
+    console.log(res.statusCode);*/
+})
+
+
 
 
 
