@@ -4,6 +4,9 @@ const exphbs = require('express-handlebars');
 const needle = require('needle');
 const tress = require('tress')
 
+const path = require('path')
+const fs = require('fs')
+
 const hbs = exphbs.create({
     defaultLayout:'main',
     extname: 'hbs'
@@ -22,12 +25,12 @@ res.render('index')
 
 let URL = 'https://www.avito.ru/pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
 
-needle.get(URL, function(err, res){
+needle.get(URL,async function(err, res){
     if (err) throw err;
+    const html = await res.body
     console.log(res.body);
     console.log(res.statusCode);
 });
-
 
 
 
