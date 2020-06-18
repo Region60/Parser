@@ -28,8 +28,11 @@ needle.get(URL, function(err, res){
     if (err) throw err
 
     let $ = cheerio.load(res.body)
-    let a = $('.snippet-horizontal   item item_table clearfix js-catalog-item-enum item-with-contact js-item-extended').contents()
-    console.log (a)
+    let a = $('.item ')
+    for(key in a) {
+       console.log(key)
+    };
+console.log(a.length)
 
     /*console.log(res.body);
     console.log(res.statusCode);*/
@@ -44,6 +47,8 @@ needle.get(URL, function(err, res){
 
 
 
+
+
 app.listen(5000, ()=>{
     console.log('Server started')
-})
+});
