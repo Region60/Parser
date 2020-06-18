@@ -9,7 +9,7 @@ const path = require('path')
 const fs = require('fs')
 
 const hbs = exphbs.create({
-    defaultLayout:'main',
+    defaultLayout: 'main',
     extname: 'hbs'
 })
 app.engine('hbs', hbs.engine)
@@ -18,41 +18,34 @@ app.set('views', 'views')
 
 app.use(express.static('public'))
 
-app.get('/',(req,res, next) =>{
-res.render('index')
+app.get('/', (req, res, next) => {
+    res.render('index')
 })
-
 
 
 let URL = 'https://www.avito.ru/pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
 let result = []
 
 
-needle.get(URL, function(err, res){
+needle.get(URL, function (err, res) {
     if (err) throw err
-
     let $ = cheerio.load(res.body)
-    let a = $('.snippet-link')
-    for(key in a){
-console.log (a[key].name)
+    let a = $('.item')
 
+    a.each(function (index) {
+        let item  = {
+            id: $(this).attr('id'),
+            name: $( this ).find('.snippet-link').attr('title'),
+            date: $( this ).find('.snippet-date-info').attr('data-tooltip'),
+            link:'https://www.avito.ru' +  $( this ).find('.snippet-link').attr('href'),
+            price:$( this ).find('.snippet-price').text().slice(2,-3)
+        }
+        result.push(item);
 
+    });
+console.log(result)
+})
 
-    }
-
-
-    /*console.log(res.body);
-    console.log(res.statusCode);*/
-});
-
-
-
-
-
-
-
-
-
-app.listen(5000, ()=>{
+app.listen(5000, () => {
     console.log('Server started')
 })
