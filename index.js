@@ -48,19 +48,21 @@ let q = tress(function (url, callback) {
 
         })
 
-        let pageCount = $('.pagination-item-1WyVp').text().slice(15, -7)
+            console.log ($('.pagination-item_active-25YwT').text())
 
-        for( let i = 1; i < pageCount+1; i++) {
+        //let pageCount = $('.pagination-item-1WyVp').text().slice(15, -7)
+
+        /*for( let i = 1; i < pageCount+1; i++) {
             //q.push(baseURL + '&p=' + i)
-        }
+        }*/
 
-        console.log(pageCount)
-        console.log(result)
+        //console.log(pageCount)
+        //console.log(result)
         console.log(res.statusCode)
     })
 
     callback()
-}, 10)
+}, 1)
 q.push(baseURL)
 
 app.listen(3000, () => {
