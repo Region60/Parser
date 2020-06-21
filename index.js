@@ -22,13 +22,13 @@ app.get('/', (req, res, next) => {
     res.render('index')
 })
 
+let randomInt =()=> {
+    return Math.floor(Math.random() * 10000)
+}
+
 
 let baseURL = 'https://www.avito.ru/pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
 let result = []
-let pageCount = 0
-let listUrl = (pageCount,baseUrl) =>{
-    for( let i = 1; i< pageCount-1;) baseUrl + '&p='
-}
 
 let q = tress(function (url, callback) {
     needle.get(url, function (err, res) {
@@ -44,18 +44,25 @@ let q = tress(function (url, callback) {
                 link: 'https://www.avito.ru' + $(this).find('.snippet-link').attr('href'),
                 price: $(this).find('.snippet-price').text().slice(2, -3)
             }
-            result.push(item);
+            result.push(item)
 
         })
-        pageCount = +$('.pagination-item-1WyVp').text().slice(15, -7)
-        console.log( typeof pageCount)
-        //console.log(result)
-    });
+
+        let pageCount = $('.pagination-item-1WyVp').text().slice(15, -7)
+
+        for( let i = 1; i < pageCount+1; i++) {
+            //q.push(baseURL + '&p=' + i)
+        }
+
+        console.log(pageCount)
+        console.log(result)
+        console.log(res.statusCode)
+    })
 
     callback()
 }, 10)
 q.push(baseURL)
 
-app.listen(5000, () => {
+app.listen(3000, () => {
     console.log('Server started')
 });
