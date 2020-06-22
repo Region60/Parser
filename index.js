@@ -23,7 +23,7 @@ app.get('/', (req, res, next) => {
 })
 
 let randomInt =()=> {
-    return -Math.floor(Math.random() * 15000)
+    return  -Math.floor(Math.random() * 20000)
 }
 
 
@@ -48,11 +48,12 @@ let q = tress(function (url, callback) {
 
         })
 
-        if ($('.pagination-item_active-25YwT').text() === 1) {
-
+        if (+$('.pagination-item_active-25YwT').text() === 1) {
             let pageCount = $('.pagination-item-1WyVp').text().slice(15, -7)
 
             for( let i = 1; i < pageCount+1; i++) {
+                console.log(i)
+                console.log(pageCount)
                 q.push(baseURL + '&p=' + i)
             }
         }
