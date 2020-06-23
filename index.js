@@ -23,12 +23,12 @@ app.get('/', (req, res, next) => {
 })
 
 let randomInt =()=> {
-    return  -Math.floor(Math.random() * 20000)
+    return  -Math.floor(Math.random() * (15000+3000))
 }
 
 
-let baseURL = 'https://www.avito.ru/pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
-let result = [];
+let baseURL = 'https://www.avito.ru/pskov/mototsikly_i_mototehnika?cd=1&radius=100&s=104';
+let result = []
 
 let q = tress(function (url, callback) {
     needle.get(url, function (err, res) {
@@ -48,20 +48,23 @@ let q = tress(function (url, callback) {
 
         })
 
-        if (+$('.pagination-item_active-25YwT').text() === 1) {
+        let pageCount = $('.pagination-item-1WyVp')
+        console.log (pageCount[7].children[0].data);
+
+        /*if (+$('.pagination-item_active-25YwT').text() === 1) {
             let pageCount = $('.pagination-item-1WyVp').text().slice(15, -7)
 
-            for( let i = 1; i < pageCount+1; i++) {
-                console.log(i)
-                console.log(pageCount)
+            for( let i = 1; i <= +pageCount+1; i++) {
+                console.log('страница' + i)
+                console.log('кол-во страниц' + pageCount)
                 q.push(baseURL + '&p=' + i)
             }
-        }
+        }*/
 
 
-        console.log(result.length)
-        console.log(res.statusCode)
-    })
+        console.log('объявлений:' + result.length)
+        console.log('status code' + res.statusCode)
+    });
 
     callback()
 }, randomInt())
