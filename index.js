@@ -22,8 +22,8 @@ app.get('/', (req, res, next) => {
     res.render('index')
 })
 
-let randomInt =()=> {
-    return  -Math.floor(Math.random() * (15000+3000))
+let randomInt = () => {
+    return -Math.floor(Math.random() * (15000 + 3000))
 }
 
 
@@ -34,9 +34,9 @@ let q = tress(function (url, callback) {
     needle.get(url, function (err, res) {
         if (err) throw err
         let $ = cheerio.load(res.body)
-        let a = $('.item')
+        let advertisements = $('.item')
 
-        a.each(function (index) {
+        advertisements.each(function (index) {
             let item = {
                 id: $(this).attr('id'),
                 name: $(this).find('.snippet-link').attr('title'),
@@ -44,31 +44,50 @@ let q = tress(function (url, callback) {
                 link: 'https://www.avito.ru' + $(this).find('.snippet-link').attr('href'),
                 price: $(this).find('.snippet-price').text().slice(2, -3)
             }
-            result.push(item)
+            result.forEach((i)=> {
+                console.log ('результ id: ' + i.id)
+                console.log ('item id: ' + item.id)
+                if (i.id !== item.id) {
+                    result.push(item)
+
+                }
+            })
+
 
         })
 
-        let pageCount = $('.pagination-item-1WyVp')
-        console.log (pageCount[7].children[0].data);
+        let paginator = $('.pagination-item-1WyVp')
+        let activPage = $('.pagination-item_active-25YwT')
+        console.log('активная страница: ' + activPage.text())
+        if (activPage.text() === '1') {
+            let pageCount = (paginator[7].children[0].data)
 
-        /*if (+$('.pagination-item_active-25YwT').text() === 1) {
-            let pageCount = $('.pagination-item-1WyVp').text().slice(15, -7)
+            console.log('кол-во страниц: ' + pageCount)
 
-            for( let i = 1; i <= +pageCount+1; i++) {
-                console.log('страница' + i)
-                console.log('кол-во страниц' + pageCount)
+            for (let i = 2; i < +pageCount + 1; i++) {
+                console.log('добавлена в очередь страница: ' + baseURL + '&p=' + i)
                 q.push(baseURL + '&p=' + i)
             }
-        }*/
+        }
 
 
         console.log('объявлений:' + result.length)
         console.log('status code' + res.statusCode)
+
+        callback(null)
+
+
     });
 
-    callback()
 }, randomInt())
+
+q.drain = function () {
+    console.log('запись в файл...')
+    fs.writeFileSync('./data.json', JSON.stringify(results, null, 4))
+}
+
 q.push(baseURL)
+
 
 app.listen(3000, () => {
     console.log('Server started')
