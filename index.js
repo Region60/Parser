@@ -44,10 +44,10 @@ let q = tress(function (url, callback) {
                 link: 'https://www.avito.ru' + $(this).find('.snippet-link').attr('href'),
                 price: $(this).find('.snippet-price').text().slice(2, -3)
             }
-            result.forEach((i)=> {
+            result.forEach(i=> {
                 console.log ('результ id: ' + i.id)
                 console.log ('item id: ' + item.id)
-                if (i.id !== item.id) {
+                if (i.id !== item.id ) {
                     result.push(item)
 
                 }
