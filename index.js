@@ -23,18 +23,34 @@ app.get('/', (req, res, next) => {
 })
 
 let randomInt = () => {
-    return -Math.floor(Math.random() * (15000 + 3000))
+    return -Math.floor(Math.random() * (7000 + 3000))
 }
 
+let q = tress(crawl, randomInt())
 
-let baseURL = 'https://www.avito.ru/pskov/mototsikly_i_mototehnika?cd=1&radius=100&s=104';
+
+let baseURL = 'https://www.avito.ru/pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
+let sCookie = 'https://www.avito.ru'
+let httpOptions = {}
 let result = []
 
-let q = tress(function (url, callback) {
+//инициализация
+needle.get(sCookie, function (err, res) {
+    if (err || res.statusCode !== 200)
+        throw err || res.statusCode
+    //установка куки
+    httpOptions.cookies = res.cookies
+//запуск краулинга
+    q.push(baseURL)
+
+
+})
+
+function crawl(url, callback) {
     needle.get(url, function (err, res) {
         if (err) throw err
         let $ = cheerio.load(res.body)
-        let advertisements = $('.item')
+        let advertisements = $('.item_table')
 
         advertisements.each(function (index) {
             let item = {
@@ -44,16 +60,17 @@ let q = tress(function (url, callback) {
                 link: 'https://www.avito.ru' + $(this).find('.snippet-link').attr('href'),
                 price: $(this).find('.snippet-price').text().slice(2, -3)
             }
-            result.forEach((i)=> {
-                console.log ('результ id: ' + i.id)
-                console.log ('item id: ' + item.id)
-                if (i.id !== item.id) {
+            if (result.length === 0) {
+                console.log('массив пустой')
+                result.push(item)
+            } else {
+                if (result.find(i => i.id !== item.id)
+                    && result.find(i => i.name !== item.name)
+                ) {
                     result.push(item)
 
                 }
-            })
-
-
+            }
         })
 
         let paginator = $('.pagination-item-1WyVp')
@@ -74,20 +91,17 @@ let q = tress(function (url, callback) {
         console.log('объявлений:' + result.length)
         console.log('status code' + res.statusCode)
 
-        callback(null)
+        callback()
 
 
     });
 
-}, randomInt())
+}
 
 q.drain = function () {
     console.log('запись в файл...')
-    fs.writeFileSync('./data.json', JSON.stringify(results, null, 4))
+    fs.writeFileSync('./data.json', JSON.stringify(result, null, 4))
 }
-
-q.push(baseURL)
-
 
 app.listen(3000, () => {
     console.log('Server started')
