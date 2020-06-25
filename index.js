@@ -23,19 +23,22 @@ app.get('/', (req, res, next) => {
 })
 
 let randomInt = () => {
-    return -Math.floor(Math.random() * (7000 + 3000))
-}
+    return -Math.floor(Math.random() * (1000 + 1000))
+};
 
 let q = tress(crawl, randomInt())
 
 
 let baseURL = 'https://www.avito.ru/pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
-let sCookie = 'https://www.avito.ru'
+let sCookie = 'https://www.avito.ru/pskov'
+//let sCookie = 'https://pro.avito.ru/pskov'
+
 let httpOptions = {}
 let result = []
 
 //инициализация
 needle.get(sCookie, function (err, res) {
+    //console.log(res)
     if (err || res.statusCode !== 200)
         throw err || res.statusCode
     //установка куки
@@ -44,7 +47,7 @@ needle.get(sCookie, function (err, res) {
     q.push(baseURL)
 
 
-})
+});
 
 function crawl(url, callback) {
     needle.get(url, function (err, res) {
@@ -89,7 +92,7 @@ function crawl(url, callback) {
 
 
         console.log('объявлений:' + result.length)
-        console.log('status code' + res.statusCode)
+        console.log('status code ' + res.statusCode)
 
         callback()
 
