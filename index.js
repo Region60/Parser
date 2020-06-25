@@ -22,32 +22,56 @@ app.get('/', (req, res, next) => {
     res.render('index')
 })
 
+//рандомная задержка
 let randomInt = () => {
-    return -Math.floor(Math.random() * (14000 + 3000))
-}
+    return -Math.floor(Math.random() * (1000 + 1000))
+};
 
-let q = tress(crawl, randomInt())
+//запуск очереди
+let q = tress(crawl, 10)
 
 
-let baseURL = 'https://www.avito.ru/pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
-let sCookie = 'https://www.avito.ru/pskov'
+//Куки
 let httpOptions = {}
-let result = []
 
-//инициализация
+//массив с объявами
+let result = []
+let urlHomePage = 'https://www.avito.ru/'
+let sCookie = 'начальный url'
+let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
+
+needle.get('https://www.avito.ru/pskov',async function (err, res) {
+    if (res.statusCode === 200) {   //если код ответа 200 то
+      await  sCookie = urlHomePage + 'pskov'
+        console.log ('если код 200 то адрес: '+sCookie)
+    }else if (res.statusCode === 302) {
+         urlHomePage = (res.headers['x-frame-options'].slice(11))
+        sCookie = urlHomePage + 'pskov'
+        console.log ('если код 302 то адрес: '+sCookie)
+    }
+})
+
+console.log ('запрос кукков с адреса: ' + sCookie)
+
+
+
+
+
+//инициализация и обработка редиректа
 needle.get(sCookie, function (err, res) {
     if (err || res.statusCode !== 200)
         throw err || res.statusCode
     //установка куки
     httpOptions.cookies = res.cookies
 //запуск краулинга
-    q.push(baseURL)
+    q.push(URL)
+});
 
-
-})
-
+//парсинг
 function crawl(url, callback) {
     needle.get(url, function (err, res) {
+        console.log(res.headers)
+
         if (err) throw err
         let $ = cheerio.load(res.body)
         let advertisements = $('.item_table')
@@ -62,21 +86,20 @@ function crawl(url, callback) {
             }
 
             if (result.length === 0) {
-                console.log('массив пустой')
+                //console.log('массив пустой')
                 result.push(item)
             } else {
                 if (result.find(i => i.id !== item.id)
                     && result.find(i => i.name !== item.name)
                 ) {
                     result.push(item)
-
                 }
             }
         })
 
         let paginator = $('.pagination-item-1WyVp')
         let activPage = $('.pagination-item_active-25YwT')
-        console.log('активная страница: ' + activPage.text())
+        //console.log('активная страница: ' + activPage.text())
         if (activPage.text() === '1') {
             let pageCount = (paginator[7].children[0].data)
 
@@ -88,19 +111,15 @@ function crawl(url, callback) {
             }
         }
 
-
         console.log('объявлений:' + result.length)
-        console.log('status code' + res.statusCode)
+        console.log('status code ' + res.statusCode)
 
         callback()
-
-
     });
-
 }
 
 q.drain = function () {
-    console.log('запись в файл...')
+    //console.log('запись в файл...')
     fs.writeFileSync('./data.json', JSON.stringify(result, null, 4))
 }
 
