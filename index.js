@@ -28,19 +28,19 @@ let randomInt = () => {
 };
 
 //запуск очереди
-let q = tress(crawl, 10)
+//let q = tress(crawl, 10)
 
 
 //Куки
-let httpOptions = {}
+let httpOptions = {};
 
 //массив с объявами
 let result = []
 let urlHomePage = 'https://www.avito.ru/'
-let sCookie = 'начальный url'
+let sCookie = 'https://www.avito.ru/pskov'
 let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
 
-needle.get('https://www.avito.ru/pskov',async function (err, res) {
+/*needle.get('https://www.avito.ru/pskov',async function (err, res) {
     if (res.statusCode === 200) {   //если код ответа 200 то
       await  sCookie = urlHomePage + 'pskov'
         console.log ('если код 200 то адрес: '+sCookie)
@@ -49,15 +49,25 @@ needle.get('https://www.avito.ru/pskov',async function (err, res) {
         sCookie = urlHomePage + 'pskov'
         console.log ('если код 302 то адрес: '+sCookie)
     }
-})
+})*/
 
 console.log ('запрос кукков с адреса: ' + sCookie)
+
+
+let   req = needle.get (sCookie, {follow_max: 3}, function (err,resp) {
+
+    req.on('redirect', function(url) {
+        let urll = url
+        console.log('urrrrl: ' + urll)
+    })
+})
 
 
 
 
 
 //инициализация и обработка редиректа
+/*
 needle.get(sCookie, function (err, res) {
     if (err || res.statusCode !== 200)
         throw err || res.statusCode
@@ -70,7 +80,9 @@ needle.get(sCookie, function (err, res) {
 //парсинг
 function crawl(url, callback) {
     needle.get(url, function (err, res) {
+/!*
         console.log(res.headers)
+*!/
 
         if (err) throw err
         let $ = cheerio.load(res.body)
@@ -106,8 +118,8 @@ function crawl(url, callback) {
             console.log('кол-во страниц: ' + pageCount)
 
             for (let i = 2; i < +pageCount + 1; i++) {
-                console.log('добавлена в очередь страница: ' + baseURL + '&p=' + i)
-                q.push(baseURL + '&p=' + i)
+                console.log('добавлена в очередь страница: ' + URL + '&p=' + i)
+                q.push(URL + '&p=' + i)
             }
         }
 
@@ -122,6 +134,7 @@ q.drain = function () {
     //console.log('запись в файл...')
     fs.writeFileSync('./data.json', JSON.stringify(result, null, 4))
 }
+*/
 
 app.listen(3000, () => {
     console.log('Server started')
