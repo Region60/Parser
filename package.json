@@ -8,6 +8,9 @@
     "dev": "nodemon index.js"
   },
   "author": "",
+  "nodemonConfig": {
+    "ignore": ["data/"]
+  },
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
@@ -17,4 +20,5 @@
     "nodemon": "^2.0.4",
     "tress": "^1.1.4"
   }
+
 }

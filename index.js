@@ -32,8 +32,6 @@ let randomInt = () => {
 
 let q = tress(crawl, randomInt())
 
-
-
 //Куки
 let httpOptions = {}
 
@@ -86,7 +84,7 @@ function crawl(url, callback) {
                     && i.name !== item.name
                     && i.price !== item.price)
                 ) {
-                    newAd.push(item)
+                    result.push(item)
                 }
             }
         })
@@ -117,6 +115,7 @@ function crawl(url, callback) {
 q.drain = function () {
     //console.log('запись в файл...')
     fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
+    console.log ('The End')
 }
 
 
