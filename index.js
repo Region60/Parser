@@ -109,13 +109,10 @@ function crawl(url, callback) {
     });
 }
 
-
-
 q.drain = function () {
     //console.log('запись в файл...')
     fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
 }
-
 
 app.listen(3000, () => {
     console.log('Server started')
