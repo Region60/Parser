@@ -29,7 +29,6 @@ let randomInt = () => {
 };
 
 //запуск очереди
-
 let q = tress(crawl, randomInt())
 
 //Куки
@@ -44,12 +43,15 @@ let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
 
 //urlHomePage = (res.headers['x-frame-options'].slice(11))
 
-fs.readFileSync('./data/data.json', function (error, data) {
-    result = JSON.parse(data)
-});
 
 //инициализация и обработка редиректа
 needle.get(sCookie, function (err, res) {
+    fs.readFile('./data/data.json', function (error, data) {
+        if(err) throw err
+        result = JSON.parse(data)
+    });
+
+
     if (err || res.statusCode !== 200)
         throw err || res.statusCode
     //установка куки
@@ -81,10 +83,10 @@ function crawl(url, callback) {
             } else {
                 //если в массиве объявления с id и name такими как item
                 if (result.find(i => i.id !== item.id
-                    && i.name !== item.name
-                    && i.price !== item.price)
+                    )
                 ) {
                     result.push(item)
+                    console.log('добавленно объявлние: ' + item.name)
                 }
             }
         })
@@ -95,10 +97,10 @@ function crawl(url, callback) {
         if (activPage.text() === '1') {
             let pageCount = (paginator[7].children[0].data)
 
-            console.log('кол-во страниц: ' + pageCount)
+            // console.log('кол-во страниц: ' + pageCount)
 
             for (let i = 2; i < +pageCount + 1; i++) {
-                console.log('добавлена в очередь страница: ' + URL + '&p=' + i)
+                //  console.log('добавлена в очередь страница: ' + URL + '&p=' + i)
                 q.push(URL + '&p=' + i)
             }
         }
@@ -111,11 +113,10 @@ function crawl(url, callback) {
 }
 
 
-
 q.drain = function () {
     //console.log('запись в файл...')
     fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
-    console.log ('The End')
+    console.log('The End')
 }
 
 
