@@ -37,19 +37,20 @@ let httpOptions = {}
 
 //массив с объявами
 let result = []
-let newAd = []
 let urlHomePage = 'https://www.avito.ru/'
 let sCookie = 'https://www.avito.ru/pskov'
 let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
 
 //urlHomePage = (res.headers['x-frame-options'].slice(11))
 
-fs.readFileSync('./data/data.json', function (error, data) {
-    result = JSON.parse(data)
-});
+
 
 //инициализация и обработка редиректа
 needle.get(sCookie, function (err, res) {
+
+    fs.readFile('./data/data.json', function (error, data) {
+        result = JSON.parse(data)
+    });
     if (err || res.statusCode !== 200)
         throw err || res.statusCode
     //установка куки
@@ -58,6 +59,7 @@ needle.get(sCookie, function (err, res) {
     q.push(URL)
 })
 
+console.log( 'в массиве: ' + result.length + 'объявлений')
 
 //парсинг
 
@@ -66,7 +68,6 @@ function crawl(url, callback) {
         if (err) throw err
         let $ = cheerio.load(res.body)
         let advertisements = $('.item_table')
-
         advertisements.each(function (index) {
             let item = {
                 id: $(this).attr('id'),
@@ -80,10 +81,10 @@ function crawl(url, callback) {
                 result.push(item)
             } else {
                 //если в массиве объявления с id и name такими как item
-                if (result.find(i => i.id !== item.id
-                    && i.name !== item.name
-                    && i.price !== item.price)
+
+                if (!result.find(i => i.id === item.id)
                 ) {
+                    console.log (item)
                     result.push(item)
                 }
             }
