@@ -32,22 +32,23 @@ let randomInt = () => {
 
 let q = tress(crawl, randomInt())
 
-
-
 //Куки
 let httpOptions = {}
 
 //массив с объявами
 let result = []
+let newAd = []
 let urlHomePage = 'https://www.avito.ru/'
 let sCookie = 'https://www.avito.ru/pskov'
 let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
 
 //urlHomePage = (res.headers['x-frame-options'].slice(11))
 
+fs.readFileSync('./data/data.json', function (error, data) {
+    result = JSON.parse(data)
+});
 
 //инициализация и обработка редиректа
-
 needle.get(sCookie, function (err, res) {
     if (err || res.statusCode !== 200)
         throw err || res.statusCode
@@ -76,12 +77,12 @@ function crawl(url, callback) {
             }
 
             if (result.length === 0) {
-                //console.log('массив пустой')
                 result.push(item)
             } else {
                 //если в массиве объявления с id и name такими как item
-                if (result.find(i => i.id !== item.id)
-                    && result.find(i => i.name !== item.name)
+                if (result.find(i => i.id !== item.id
+                    && i.name !== item.name
+                    && i.price !== item.price)
                 ) {
                     result.push(item)
                 }
@@ -112,6 +113,7 @@ function crawl(url, callback) {
 q.drain = function () {
     //console.log('запись в файл...')
     fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
+    console.log ('The End')
 }
 
 app.listen(3000, () => {
