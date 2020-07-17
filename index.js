@@ -48,12 +48,6 @@ let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
 //инициализация и обработка редиректа
 needle.get(sCookie, function (err, res) {
 
-    bot.on('message', function (msg) {
-        let fromId = msg.chat.id;
-        bot.sendMessage(fromId, 'test');
-    });
-
-
     fs.readFile('./data/data.json', function (error, data) {
         result = JSON.parse(data)
     });
@@ -107,6 +101,8 @@ function crawl(url, callback) {
             for (let i = 2; i < +pageCount + 1; i++) {
                 //  console.log('добавлена в очередь страница: ' + URL + '&p=' + i)
                 q.push(URL + '&p=' + i)
+                bot.sendMessage(1322775332, URL + '&p=' + i);
+
 
             }
         }
