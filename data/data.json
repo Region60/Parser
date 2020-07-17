@@ -5367,5 +5367,572 @@
         "date": "20 июня 17:24",
         "link": "https://www.avito.ru/pytalovo/mototsikly_i_mototehnika/moped_orion_yh50-ms_1939090206",
         "price": "25 000  ₽"
+    },
+    {
+        "id": "i1950183110",
+        "name": "Husaberg FC 450 в Пскове",
+        "date": "18 июля 00:10",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/husaberg_fc_450_1950183110",
+        "price": "95 000  ₽"
+    },
+    {
+        "id": "i1917984122",
+        "name": "Мокик Мопэд Карпаты в Пскове",
+        "date": "18 июля 00:04",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/mokik_moped_karpaty_1917984122",
+        "price": "9 500  ₽"
+    },
+    {
+        "id": "i1918206889",
+        "name": "Красный Иж Прекрасный в Пскове",
+        "date": "18 июля 00:02",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/krasnyy_izh_prekrasnyy_1918206889",
+        "price": "28 500  ₽"
+    },
+    {
+        "id": "i1951790476",
+        "name": "Скутер 50 кубов в Старой Руссе",
+        "date": "17 июля 23:59",
+        "link": "https://www.avito.ru/staraya_russa/mototsikly_i_mototehnika/skuter_50_kubov_1951790476",
+        "price": "24 000  ₽"
+    },
+    {
+        "id": "i1476635459",
+        "name": "BMW K1100LT в Пскове",
+        "date": "17 июля 23:17",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/bmw_k1100lt_1476635459",
+        "price": "235 000  ₽"
+    },
+    {
+        "id": "i1962571728",
+        "name": "Х.з в Великом Новгороде",
+        "date": "17 июля 22:07",
+        "link": "https://www.avito.ru/velikiy_novgorod/mototsikly_i_mototehnika/h.z_1962571728",
+        "price": "15 000  ₽"
+    },
+    {
+        "id": "i1966226318",
+        "name": "Скутер 75 к в Кингисеппе",
+        "date": "17 июля 20:30",
+        "link": "https://www.avito.ru/kingisepp/mototsikly_i_mototehnika/skuter_75_k_1966226318",
+        "price": "10 000  ₽"
+    },
+    {
+        "id": "i1963370432",
+        "name": "Irbis ttr 125R в Сиверском",
+        "date": "17 июля 20:06",
+        "link": "https://www.avito.ru/siverskiy/mototsikly_i_mototehnika/irbis_ttr_125r_1963370432",
+        "price": "45 000  ₽"
+    },
+    {
+        "id": "i1957829971",
+        "name": "Raser gs 50 в Великом Новгороде",
+        "date": "17 июля 19:42",
+        "link": "https://www.avito.ru/velikiy_novgorod/mototsikly_i_mototehnika/raser_gs_50_1957829971",
+        "price": "21 000  ₽"
+    },
+    {
+        "id": "i1976359454",
+        "name": "Мотоцикл Racer RC250-C5B в Великом Новгороде",
+        "date": "17 июля 17:35",
+        "link": "https://www.avito.ru/velikiy_novgorod/mototsikly_i_mototehnika/mototsikl_racer_rc250-c5b_1976359454",
+        "price": "73 000  ₽"
+    },
+    {
+        "id": "i1918007439",
+        "name": "Альфа в Опочке",
+        "date": "17 июля 16:45",
+        "link": "https://www.avito.ru/opochka/mototsikly_i_mototehnika/alfa_1918007439",
+        "price": "32 500  ₽"
+    },
+    {
+        "id": "i1962021326",
+        "name": "X11 в Сланцах",
+        "date": "17 июля 15:55",
+        "link": "https://www.avito.ru/slantsy/mototsikly_i_mototehnika/x11_1962021326",
+        "price": "240 000  ₽"
+    },
+    {
+        "id": "i1960077046",
+        "name": "Продам скутер Storm L ZW50QT в Холме",
+        "date": "17 июля 15:41",
+        "link": "https://www.avito.ru/holm/mototsikly_i_mototehnika/prodam_skuter_storm_l_zw50qt_1960077046",
+        "price": "18 000  ₽"
+    },
+    {
+        "id": "i1973586396",
+        "name": "Продам скутер в Себеже",
+        "date": "17 июля 15:25",
+        "link": "https://www.avito.ru/sebezh/mototsikly_i_mototehnika/prodam_skuter_1973586396",
+        "price": "10 000  ₽"
+    },
+    {
+        "id": "i1960203031",
+        "name": "Мотоцикл Regulmoto sport 003 в Луге",
+        "date": "17 июля 15:22",
+        "link": "https://www.avito.ru/luga/mototsikly_i_mototehnika/mototsikl_regulmoto_sport_003_1960203031",
+        "price": "81 000  ₽"
+    },
+    {
+        "id": "i1954428890",
+        "name": "Скутер 50сс. Ремонт скутеров в Пскове",
+        "date": "17 июля 15:21",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/skuter_50ss._remont_skuterov_1954428890",
+        "price": "20 000  ₽"
+    },
+    {
+        "id": "i1978387352",
+        "name": "Скутер Yamaha Gear 4х такт в Луге",
+        "date": "17 июля 15:03",
+        "link": "https://www.avito.ru/luga/mototsikly_i_mototehnika/skuter_yamaha_gear_4h_takt_1978387352",
+        "price": "55 000  ₽"
+    },
+    {
+        "id": "i1955316766",
+        "name": "Honda Dio AF 34 в Волошове",
+        "date": "17 июля 14:14",
+        "link": "https://www.avito.ru/voloshovo/mototsikly_i_mototehnika/honda_dio_af_34_1955316766",
+        "price": "7 500  ₽"
+    },
+    {
+        "id": "i1961203008",
+        "name": "Мотоцикл Днепр 1976 года в Плюссе",
+        "date": "17 июля 12:15",
+        "link": "https://www.avito.ru/plyussa/mototsikly_i_mototehnika/mototsikl_dnepr_1976_goda_1961203008",
+        "price": "15 000  ₽"
+    },
+    {
+        "id": "i1973714676",
+        "name": "Электро мопед в Пскове",
+        "date": "17 июля 12:12",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/elektro_moped_1973714676",
+        "price": "Цена не указа"
+    },
+    {
+        "id": "i1903562436",
+        "name": "Wels 140 в Старой Руссе",
+        "date": "17 июля 11:58",
+        "link": "https://www.avito.ru/staraya_russa/mototsikly_i_mototehnika/wels_140_1903562436",
+        "price": "43 333  ₽"
+    },
+    {
+        "id": "i1952395953",
+        "name": "Kawasaki ZX 6R в Луге",
+        "date": "17 июля 10:32",
+        "link": "https://www.avito.ru/luga/mototsikly_i_mototehnika/kawasaki_zx_6r_1952395953",
+        "price": "95 000  ₽"
+    },
+    {
+        "id": "i1955097312",
+        "name": "Армада 150 в Старой Руссе",
+        "date": "17 июля 09:09",
+        "link": "https://www.avito.ru/staraya_russa/mototsikly_i_mototehnika/armada_150_1955097312",
+        "price": "35 000  ₽"
+    },
+    {
+        "id": "i1309183548",
+        "name": "Yamaha neos в Острове",
+        "date": "17 июля 07:31",
+        "link": "https://www.avito.ru/ostrov/mototsikly_i_mototehnika/yamaha_neos_1309183548",
+        "price": "42 000  ₽"
+    },
+    {
+        "id": "i1960821634",
+        "name": "Мотоцикл Wels в Пскове",
+        "date": "16 июля 23:54",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/mototsikl_wels_1960821634",
+        "price": "75 000  ₽"
+    },
+    {
+        "id": "i1956059995",
+        "name": "Мопед Вираго на ходу в Кингисеппе",
+        "date": "16 июля 22:34",
+        "link": "https://www.avito.ru/kingisepp/mototsikly_i_mototehnika/moped_virago_na_hodu_1956059995",
+        "price": "20 000  ₽"
+    },
+    {
+        "id": "i1961809035",
+        "name": "Чезет 350 в Луге",
+        "date": "16 июля 22:32",
+        "link": "https://www.avito.ru/luga/mototsikly_i_mototehnika/chezet_350_1961809035",
+        "price": "45 000  ₽"
+    },
+    {
+        "id": "i1955870715",
+        "name": "Продам литровую Honda CBR 919rr Fireblade в Пскове",
+        "date": "16 июля 22:04",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/prodam_litrovuyu_honda_cbr_919rr_fireblade_1955870715",
+        "price": "200 000  ₽"
+    },
+    {
+        "id": "i1978425768",
+        "name": "Хонда Дио Фит в Толмачево",
+        "date": "16 июля 22:02",
+        "link": "https://www.avito.ru/leningradskaya_oblast_tolmachevo/mototsikly_i_mototehnika/honda_dio_fit_1978425768",
+        "price": "37 000  ₽"
+    },
+    {
+        "id": "i1935275708",
+        "name": "Мотоцикл alpha 125 в Луге",
+        "date": "16 июля 21:47",
+        "link": "https://www.avito.ru/luga/mototsikly_i_mototehnika/mototsikl_alpha_125_1935275708",
+        "price": "38 000  ₽"
+    },
+    {
+        "id": "i1955883751",
+        "name": "Storm в Пскове",
+        "date": "16 июля 21:31",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/storm_1955883751",
+        "price": "3 000  ₽"
+    },
+    {
+        "id": "i1955135944",
+        "name": "Stels Flex 250cc в Острове",
+        "date": "16 июля 21:25",
+        "link": "https://www.avito.ru/ostrov/mototsikly_i_mototehnika/stels_flex_250cc_1955135944",
+        "price": "45 000  ₽"
+    },
+    {
+        "id": "i1953990837",
+        "name": "Зид-2 в Парфино",
+        "date": "16 июля 20:56",
+        "link": "https://www.avito.ru/parfino/mototsikly_i_mototehnika/zid-2_1953990837",
+        "price": "30 000  ₽"
+    },
+    {
+        "id": "i1886377088",
+        "name": "Pitrace 150 Pro в Кингисеппе",
+        "date": "16 июля 20:38",
+        "link": "https://www.avito.ru/kingisepp/mototsikly_i_mototehnika/pitrace_150_pro_1886377088",
+        "price": "35 000  ₽"
+    },
+    {
+        "id": "i1963899501",
+        "name": "Yamaha Aerox 70 см в Пскове",
+        "date": "16 июля 18:58",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/yamaha_aerox_70_sm_1963899501",
+        "price": "80 000  ₽"
+    },
+    {
+        "id": "i1617037673",
+        "name": "Вездеход (Болотоход) в Новоржеве",
+        "date": "16 июля 16:08",
+        "link": "https://www.avito.ru/novorzhev/mototsikly_i_mototehnika/vezdehod_bolotohod_1617037673",
+        "price": "370 000  ₽"
+    },
+    {
+        "id": "i1957070430",
+        "name": "Volcan 150 в Плюссе",
+        "date": "16 июля 14:17",
+        "link": "https://www.avito.ru/plyussa/mototsikly_i_mototehnika/volcan_150_1957070430",
+        "price": "17 000  ₽"
+    },
+    {
+        "id": "i1963271616",
+        "name": "Irbis rzr 170 в Великом Новгороде",
+        "date": "16 июля 13:53",
+        "link": "https://www.avito.ru/velikiy_novgorod/mototsikly_i_mototehnika/irbis_rzr_170_1963271616",
+        "price": "35 000  ₽"
+    },
+    {
+        "id": "i1979640814",
+        "name": "Скутер volcan ZW150T-2 в Пскове",
+        "date": "16 июля 13:40",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/skuter_volcan_zw150t-2_1979640814",
+        "price": "40 000  ₽"
+    },
+    {
+        "id": "i1387166095",
+        "name": "Раритет в Середке",
+        "date": "16 июля 12:48",
+        "link": "https://www.avito.ru/seredka/mototsikly_i_mototehnika/raritet_1387166095",
+        "price": "30 000  ₽"
+    },
+    {
+        "id": "i1967434099",
+        "name": "Лифан Дакота 250 в Пскове",
+        "date": "16 июля 12:47",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/lifan_dakota_250_1967434099",
+        "price": "110 000  ₽"
+    },
+    {
+        "id": "i1967896458",
+        "name": "Ямаха фзр 600 в Пскове",
+        "date": "16 июля 12:34",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/yamaha_fzr_600_1967896458",
+        "price": "150 000  ₽"
+    },
+    {
+        "id": "i1936075713",
+        "name": "XJ600S Diversion 1994год в Великом Новгороде",
+        "date": "16 июля 12:05",
+        "link": "https://www.avito.ru/velikiy_novgorod/mototsikly_i_mototehnika/xj600s_diversion_1994god_1936075713",
+        "price": "120 000  ₽"
+    },
+    {
+        "id": "i1952207049",
+        "name": "Скутер Honda dio zx 27 в Старой Руссе",
+        "date": "16 июля 09:50",
+        "link": "https://www.avito.ru/staraya_russa/mototsikly_i_mototehnika/skuter_honda_dio_zx_27_1952207049",
+        "price": "19 000  ₽"
+    },
+    {
+        "id": "i1886083957",
+        "name": "Квадроцикл Avantis Hunter 200 New LUX в Великом Новгороде",
+        "date": "16 июля 09:36",
+        "link": "https://www.avito.ru/velikiy_novgorod/mototsikly_i_mototehnika/kvadrotsikl_avantis_hunter_200_new_lux_1886083957",
+        "price": "154 900  ₽"
+    },
+    {
+        "id": "i1979695933",
+        "name": "Питбайк BSE 125 MX 2019 в Великом Новгороде",
+        "date": "16 июля 08:19",
+        "link": "https://www.avito.ru/velikiy_novgorod/mototsikly_i_mototehnika/pitbayk_bse_125_mx_2019_1979695933",
+        "price": "50 000  ₽"
+    },
+    {
+        "id": "i1317846384",
+        "name": "Продам снегоболотоход лада бронто 1922-00 в Сланцах",
+        "date": "16 июля 07:58",
+        "link": "https://www.avito.ru/slantsy/mototsikly_i_mototehnika/prodam_snegobolotohod_lada_bronto_1922-00_1317846384",
+        "price": "850 000  ₽"
+    },
+    {
+        "id": "i1979225447",
+        "name": "Ирбис Ттр 250 в Пскове",
+        "date": "15 июля 23:47",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/irbis_ttr_250_1979225447",
+        "price": "60 000  ₽"
+    },
+    {
+        "id": "i1958865962",
+        "name": "Скутер в Пскове",
+        "date": "15 июля 23:29",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/skuter_1958865962",
+        "price": "14 000  ₽"
+    },
+    {
+        "id": "i1981304369",
+        "name": "Alpha irbis 110cc в Острове",
+        "date": "15 июля 22:38",
+        "link": "https://www.avito.ru/ostrov/mototsikly_i_mototehnika/alpha_irbis_110cc_1981304369",
+        "price": "25 000  ₽"
+    },
+    {
+        "id": "i1975720430",
+        "name": "Ява638 в Панковке",
+        "date": "15 июля 21:17",
+        "link": "https://www.avito.ru/pankovka/mototsikly_i_mototehnika/yava638_1975720430",
+        "price": "50 000  ₽"
+    },
+    {
+        "id": "i1966796238",
+        "name": "Мотоцикл в Бежаницах",
+        "date": "15 июля 21:16",
+        "link": "https://www.avito.ru/bezhanitsy/mototsikly_i_mototehnika/mototsikl_1966796238",
+        "price": "9 000  ₽"
+    },
+    {
+        "id": "i1956722330",
+        "name": "Kawasaki-zr7s в Кингисеппе",
+        "date": "15 июля 20:55",
+        "link": "https://www.avito.ru/kingisepp/mototsikly_i_mototehnika/kawasaki-zr7s_1956722330",
+        "price": "125 000  ₽"
+    },
+    {
+        "id": "i1969146106",
+        "name": "Umc в Великом Новгороде",
+        "date": "15 июля 20:27",
+        "link": "https://www.avito.ru/velikiy_novgorod/mototsikly_i_mototehnika/umc_1969146106",
+        "price": "20 000  ₽"
+    },
+    {
+        "id": "i1953707976",
+        "name": "Irbis GR250 в Великом Новгороде",
+        "date": "15 июля 18:58",
+        "link": "https://www.avito.ru/velikiy_novgorod/mototsikly_i_mototehnika/irbis_gr250_1953707976",
+        "price": "57 000  ₽"
+    },
+    {
+        "id": "i1981563331",
+        "name": "Ракет 85 в Пскове",
+        "date": "15 июля 18:44",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/raket_85_1981563331",
+        "price": "23 000  ₽"
+    },
+    {
+        "id": "i1979567417",
+        "name": "Самокат сяоми м365, на запчасти в Пскове",
+        "date": "15 июля 18:40",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/samokat_syaomi_m365_na_zapchasti_1979567417",
+        "price": "5 000  ₽"
+    },
+    {
+        "id": "i1950848515",
+        "name": "Honda cr125r в Пскове",
+        "date": "15 июля 17:20",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/honda_cr125r_1950848515",
+        "price": "180 000  ₽"
+    },
+    {
+        "id": "i1968857528",
+        "name": "X-Moto rx200 в Волошове",
+        "date": "15 июля 14:37",
+        "link": "https://www.avito.ru/voloshovo/mototsikly_i_mototehnika/x-moto_rx200_1968857528",
+        "price": "85 000  ₽"
+    },
+    {
+        "id": "i1959201963",
+        "name": "Hunter(Хантер) в Острове",
+        "date": "15 июля 13:23",
+        "link": "https://www.avito.ru/ostrov/mototsikly_i_mototehnika/hunterhanter_1959201963",
+        "price": "42 000  ₽"
+    },
+    {
+        "id": "i1974243089",
+        "name": "Иж Планета 5 в Новоржеве",
+        "date": "15 июля 13:03",
+        "link": "https://www.avito.ru/novorzhev/mototsikly_i_mototehnika/izh_planeta_5_1974243089",
+        "price": "65 000  ₽"
+    },
+    {
+        "id": "i1101395509",
+        "name": "Yamaha Fz6 в Волосово",
+        "date": "15 июля 13:02",
+        "link": "https://www.avito.ru/volosovo/mototsikly_i_mototehnika/yamaha_fz6_1101395509",
+        "price": "190 000  ₽"
+    },
+    {
+        "id": "i1964862767",
+        "name": "Ява 350 6 вольт в Опочке",
+        "date": "15 июля 12:12",
+        "link": "https://www.avito.ru/opochka/mototsikly_i_mototehnika/yava_350_6_volt_1964862767",
+        "price": "18 000  ₽"
+    },
+    {
+        "id": "i1975251939",
+        "name": "Продам мотоцикл в Кингисеппе",
+        "date": "15 июля 11:25",
+        "link": "https://www.avito.ru/kingisepp/mototsikly_i_mototehnika/prodam_mototsikl_1975251939",
+        "price": "63 000  ₽"
+    },
+    {
+        "id": "i1969233528",
+        "name": "Cfmoto 150NK в Пскове",
+        "date": "15 июля 10:43",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/cfmoto_150nk_1969233528",
+        "price": "119 000  ₽"
+    },
+    {
+        "id": "i1981141728",
+        "name": "Honda CB 1000 SF в Старой Руссе",
+        "date": "15 июля 10:41",
+        "link": "https://www.avito.ru/staraya_russa/mototsikly_i_mototehnika/honda_cb_1000_sf_1981141728",
+        "price": "150 000  ₽"
+    },
+    {
+        "id": "i1974169366",
+        "name": "Honda dio tact 51 в Луге",
+        "date": "15 июля 08:57",
+        "link": "https://www.avito.ru/luga/mototsikly_i_mototehnika/honda_dio_tact_51_1974169366",
+        "price": "19 000  ₽"
+    },
+    {
+        "id": "i1978855872",
+        "name": "Скутер в Великом Новгороде",
+        "date": "15 июля 06:53",
+        "link": "https://www.avito.ru/velikiy_novgorod/mototsikly_i_mototehnika/skuter_1978855872",
+        "price": "15 000  ₽"
+    },
+    {
+        "id": "i1971226419",
+        "name": "Восход-3 в Новоржеве",
+        "date": "15 июля 03:28",
+        "link": "https://www.avito.ru/novorzhev/mototsikly_i_mototehnika/voshod-3_1971226419",
+        "price": "12 000  ₽"
+    },
+    {
+        "id": "i1966509523",
+        "name": "Продам (обменяю) Иж Юпитер 5 в Палкино",
+        "date": "15 июля 02:52",
+        "link": "https://www.avito.ru/palkino/mototsikly_i_mototehnika/prodam_obmenyayu_izh_yupiter_5_1966509523",
+        "price": "10 000  ₽"
+    },
+    {
+        "id": "i1968829161",
+        "name": "Обмен на телегу от мотоблока в Парфино",
+        "date": "15 июля 01:36",
+        "link": "https://www.avito.ru/parfino/mototsikly_i_mototehnika/obmen_na_telegu_ot_motobloka_1968829161",
+        "price": "Цена не указа"
+    },
+    {
+        "id": "i1822917004",
+        "name": "Буран в Сланцах",
+        "date": "15 июля 01:02",
+        "link": "https://www.avito.ru/slantsy/mototsikly_i_mototehnika/buran_1822917004",
+        "price": "120 000  ₽"
+    },
+    {
+        "id": "i1952212625",
+        "name": "Урал 1970г (хорошее состояние) в Новоржеве",
+        "date": "14 июля 22:50",
+        "link": "https://www.avito.ru/novorzhev/mototsikly_i_mototehnika/ural_1970g_horoshee_sostoyanie_1952212625",
+        "price": "25 000  ₽"
+    },
+    {
+        "id": "i1967405855",
+        "name": "Максискутер SYM 300 GTS EVO 2013 г.в в Луге",
+        "date": "14 июля 22:06",
+        "link": "https://www.avito.ru/luga/mototsikly_i_mototehnika/maksiskuter_sym_300_gts_evo_2013_g.v_1967405855",
+        "price": "95 000  ₽"
+    },
+    {
+        "id": "i1980103718",
+        "name": "Мопед BM (Baltmotors) joy 50 в Великом Новгороде",
+        "date": "14 июля 21:47",
+        "link": "https://www.avito.ru/velikiy_novgorod/mototsikly_i_mototehnika/moped_bm_baltmotors_joy_50_1980103718",
+        "price": "13 000  ₽"
+    },
+    {
+        "id": "i1951558806",
+        "name": "Иж Планета 5К в Пскове",
+        "date": "14 июля 19:20",
+        "link": "https://www.avito.ru/pskov/mototsikly_i_mototehnika/izh_planeta_5k_1951558806",
+        "price": "92 000  ₽"
+    },
+    {
+        "id": "i1970361785",
+        "name": "Скутер MM iris в Великом Новгороде",
+        "date": "14 июля 19:00",
+        "link": "https://www.avito.ru/velikiy_novgorod/mototsikly_i_mototehnika/skuter_mm_iris_1970361785",
+        "price": "67 900  ₽"
+    },
+    {
+        "id": "i1955705504",
+        "name": "Скутер baotian в Плюссе",
+        "date": "14 июля 17:51",
+        "link": "https://www.avito.ru/plyussa/mototsikly_i_mototehnika/skuter_baotian_1955705504",
+        "price": "15 000  ₽"
+    },
+    {
+        "id": "i1961708184",
+        "name": "Brp Outlander L 500 max dps в Дружной Горке",
+        "date": "14 июля 15:05",
+        "link": "https://www.avito.ru/druzhnaya_gorka/mototsikly_i_mototehnika/brp_outlander_l_500_max_dps_1961708184",
+        "price": "880 000  ₽"
+    },
+    {
+        "id": "i1950633732",
+        "name": "Питбайк ирбис 125 в Стругах Красных",
+        "date": "11 июля 14:09",
+        "link": "https://www.avito.ru/strugi_krasnye/mototsikly_i_mototehnika/pitbayk_irbis_125_1950633732",
+        "price": "30 000  ₽"
+    },
+    {
+        "id": "i1933553859",
+        "name": "Suzuki Katana gsx600f в Великом Новгороде",
+        "date": "29 июня 18:46",
+        "link": "https://www.avito.ru/velikiy_novgorod/mototsikly_i_mototehnika/suzuki_katana_gsx600f_1933553859",
+        "price": "140 000  ₽"
     }
 ]
