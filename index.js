@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const needle = require('needle');
 const tress = require('tress')
 const cheerio = require('cheerio')
+const telegramBot = require ('./modules/telegramBot/telegramBot')
 
 
 const path = require('path')

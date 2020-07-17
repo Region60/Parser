@@ -9,7 +9,9 @@
   },
   "author": "",
   "nodemonConfig": {
-    "ignore": ["data/"]
+    "ignore": [
+      "data/"
+    ]
   },
   "license": "ISC",
   "dependencies": {
@@ -17,8 +19,8 @@
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
     "needle": "^2.5.0",
+    "node-telegram-bot-api": "^0.50.0",
     "nodemon": "^2.0.4",
     "tress": "^1.1.4"
   }
-
 }
