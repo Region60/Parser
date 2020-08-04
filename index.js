@@ -85,6 +85,7 @@ function crawl(url, callback) {
                 ) {
                     //console.log (item)
                     result.push(item)
+                    bot.sendMessage(1322775332, item.link);
                    // console.log('добавленно объявлние: ' + item.name)
                 }
             }
@@ -101,9 +102,6 @@ function crawl(url, callback) {
             for (let i = 2; i < +pageCount + 1; i++) {
                 //  console.log('добавлена в очередь страница: ' + URL + '&p=' + i)
                 q.push(URL + '&p=' + i)
-                bot.sendMessage(1322775332, URL + '&p=' + i);
-
-
             }
         }
 
