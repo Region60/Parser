@@ -39,7 +39,7 @@ let httpOptions = {}
 let result = []
 let urlHomePage = 'https://www.avito.ru/'
 let sCookie = 'https://www.avito.ru/pskov'
-let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
+let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&pmax=150000&pmin=50000&radius=300&s=104&proprofile=1';
 
 //urlHomePage = (res.headers['x-frame-options'].slice(11))
 
