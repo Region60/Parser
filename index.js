@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars');
 const needle = require('needle');
 const tress = require('tress')
 const cheerio = require('cheerio')
-const bot = require ('./modules/telegramBot/telegramBot')
+const bot = require('./modules/telegramBot/telegramBot')
 
 
 const path = require('path')
@@ -21,7 +21,9 @@ app.set('views', 'views')
 app.use(express.static('public'))
 
 app.get('/', (req, res, next) => {
-    res.render('index')
+    res.render('index',{
+        title: 'Parser'
+    })                       //указываем какую страницу надо отрендерить
 })
 
 //рандомная задержка
@@ -39,12 +41,12 @@ let httpOptions = {}
 let result = []
 let urlHomePage = 'https://www.avito.ru/'
 let sCookie = 'https://www.avito.ru/pskov'
-let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&radius=200&s=104';
+let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&pmax=150000&pmin=50000&radius=300&proprofile=1&s=104';
 
 //urlHomePage = (res.headers['x-frame-options'].slice(11))
 
-
-
+let startCr = () =>
+    q.push(URL)
 //инициализация и обработка редиректа
 needle.get(sCookie, function (err, res) {
 
@@ -56,7 +58,7 @@ needle.get(sCookie, function (err, res) {
     //установка куки
     httpOptions.cookies = res.cookies
 //запуск краулинга
-    q.push(URL)
+    startCr()
 })
 
 
@@ -86,7 +88,7 @@ function crawl(url, callback) {
                     //console.log (item)
                     result.push(item)
                     bot.sendMessage(1322775332, item.link);
-                   // console.log('добавленно объявлние: ' + item.name)
+                    // console.log('добавленно объявлние: ' + item.name)
                 }
             }
         })
@@ -117,6 +119,7 @@ q.drain = function () {
     //console.log('запись в файл...')
     fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
     console.log('The End')
+    //setTimeout( startCr, 600000    )
 }
 
 app.listen(3000, () => {
