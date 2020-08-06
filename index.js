@@ -5,6 +5,7 @@ const needle = require('needle');
 const tress = require('tress')
 const cheerio = require('cheerio')
 const bot = require('./modules/telegramBot/telegramBot')
+const addLink = require('./routes/addLink')
 
 
 const path = require('path')
@@ -19,12 +20,9 @@ app.set('view engine', 'hbs')
 app.set('views', 'views')
 
 app.use(express.static('public'))
+app.use(express.urlencoded({extended:true}))
 
-app.get('/', (req, res, next) => {
-    res.render('index',{
-        title: 'Parser'
-    })                       //указываем какую страницу надо отрендерить
-})
+app.use('/',addLink)
 
 //рандомная задержка
 let randomInt = () => {
@@ -41,7 +39,8 @@ let httpOptions = {}
 let result = []
 let urlHomePage = 'https://www.avito.ru/'
 let sCookie = 'https://www.avito.ru/pskov'
-let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&pmax=150000&pmin=50000&radius=300&proprofile=1&s=104';
+let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&pmax=150000&pmin=50000&radius=300&s=104&proprofile=1';
+
 
 //urlHomePage = (res.headers['x-frame-options'].slice(11))
 
@@ -65,6 +64,7 @@ needle.get(sCookie, function (err, res) {
 //парсинг
 
 function crawl(url, callback) {
+   //q.pause()
     needle.get(url, function (err, res) {
         if (err) throw err
         let $ = cheerio.load(res.body)
