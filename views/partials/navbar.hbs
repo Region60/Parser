@@ -1,0 +1,19 @@
+<nav>
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo">Parser</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+            {{#if isHome}}
+                <li class="active"><a href="/">Главная</a></li>
+            {{else}}
+                <li><a href="/">Главная</a></li>
+            {{/if}}
+
+                <li class="active"><a href="/courses">Settings</a></li>                {{#if isLogin}}
+                    <li class="active"><a href="/auth/login#login">Войти</a></li>
+                {{else}}
+                    <li><a href="/auth/login#login">Войти</a></li>
+                {{/if}}
+        </ul>
+    </div>
+</nav>
