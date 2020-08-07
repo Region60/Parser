@@ -4,12 +4,29 @@ const exphbs = require('express-handlebars');
 const needle = require('needle');
 const tress = require('tress')
 const cheerio = require('cheerio')
+const mongoose = require('mongoose')
 const bot = require('./modules/telegramBot/telegramBot')
 const addLink = require('./routes/addLink')
 
 
 const path = require('path')
 const fs = require('fs')
+
+async function start() {
+    try {
+        const urmMB = "mongodb+srv://maksim:8u2upvDe0W1dp945@cluster0-mjkka.mongodb.net/shop"
+        await mongoose.connect(urmMB, {useNewUrlParser: true})
+        app.listen(3000, () => {
+            console.log('Server started')
+        })
+    } catch (e) {
+        console.log(e)
+    }
+
+}
+
+start()
+
 
 const hbs = exphbs.create({
     defaultLayout: 'main',
@@ -20,9 +37,9 @@ app.set('view engine', 'hbs')
 app.set('views', 'views')
 
 app.use(express.static('public'))
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended: true}))
 
-app.use('/',addLink)
+app.use('/', addLink)
 
 //рандомная задержка
 let randomInt = () => {
@@ -64,7 +81,7 @@ needle.get(sCookie, function (err, res) {
 //парсинг
 
 function crawl(url, callback) {
-   //q.pause()
+    //q.pause()
     needle.get(url, function (err, res) {
         if (err) throw err
         let $ = cheerio.load(res.body)
@@ -122,6 +139,4 @@ q.drain = function () {
     //setTimeout( startCr, 600000    )
 }
 
-app.listen(3000, () => {
-    console.log('Server started')
-})
+
