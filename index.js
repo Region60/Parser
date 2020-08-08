@@ -14,7 +14,7 @@ const fs = require('fs')
 
 async function start() {
     try {
-        const urmMB = "mongodb+srv://maksim:8u2upvDe0W1dp945@cluster0-mjkka.mongodb.net/shop"
+        const urmMB = "mongodb+srv://maksim:8u2upvDe0W1dp945@cluster0-mjkka.mongodb.net/request"
         await mongoose.connect(urmMB, {useNewUrlParser: true})
         app.listen(3000, () => {
             console.log('Server started')
@@ -81,7 +81,7 @@ needle.get(sCookie, function (err, res) {
 //парсинг
 
 function crawl(url, callback) {
-    //q.pause()
+    q.pause()
     needle.get(url, function (err, res) {
         if (err) throw err
         let $ = cheerio.load(res.body)
@@ -104,7 +104,7 @@ function crawl(url, callback) {
                 ) {
                     //console.log (item)
                     result.push(item)
-                    bot.sendMessage(1322775332, item.link);
+                    //bot.sendMessage(1322775332, item.link);
                     // console.log('добавленно объявлние: ' + item.name)
                 }
             }

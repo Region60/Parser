@@ -1,5 +1,6 @@
 const {Router} = require('express')
 const router = Router()
+const Request =require('../models/request')
 
 router.get('/', (req, res) => {
     res.render('index', {
@@ -12,6 +13,7 @@ router.post('/', async (req, res) => {
         url: req.body.link
     })
     try {
+        console.log('save')
         await request.save()
     } catch (e) {
             console.log(e)
