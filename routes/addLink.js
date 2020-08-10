@@ -4,7 +4,8 @@ const Request =require('../models/request')
 
 router.get('/', (req, res) => {
     res.render('index', {
-        title: "Главнаая страница"
+        title: "Главнаая страница",
+        isHome: true
     })
 })
 

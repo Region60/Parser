@@ -1,12 +1,18 @@
 const express = require('express')
 const app = express();
 const exphbs = require('express-handlebars');
+const session = require('express-session');
 const needle = require('needle');
 const tress = require('tress')
 const cheerio = require('cheerio')
 const mongoose = require('mongoose')
 const bot = require('./modules/telegramBot/telegramBot')
-const addLink = require('./routes/addLink')
+const homeRoutes = require('./routes/home')
+const addLinkRoutes = require('./routes/addLink')
+const authRoutes = require('./routes/auth')
+const varMiddleware = require('./middleware/variables')
+
+
 
 
 const path = require('path')
@@ -38,8 +44,15 @@ app.set('views', 'views')
 
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
+app.use(session({
+    secret:'some secret value',
+    resave: false,
+    saveUnitialized: false
+}))
+app.use(varMiddleware)
 
-app.use('/', addLink)
+app.use("/", addLinkRoutes)
+app.use( "/auth",authRoutes)
 
 //рандомная задержка
 let randomInt = () => {

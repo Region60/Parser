@@ -9,11 +9,18 @@
                 <li><a href="/">Главная</a></li>
             {{/if}}
 
-                <li class="active"><a href="/courses">Settings</a></li>                {{#if isLogin}}
-                    <li class="active"><a href="/auth/login#login">Войти</a></li>
+            {{#if isAuth}}
+                <li><a href="/auth/logout">Выйти</a></li>
+
+            {{else}}
+
+                {{#if isLogin}}
+                    <li class="active"><a href="/auth/login">Войти</a></li>
                 {{else}}
-                    <li><a href="/auth/login#login">Войти</a></li>
+                    <li><a href="/auth/login">Войти</a></li>
                 {{/if}}
+
+            {{/if}}
         </ul>
     </div>
 </nav>
