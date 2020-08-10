@@ -11,8 +11,8 @@ const homeRoutes = require('./routes/home')
 const addLinkRoutes = require('./routes/addLink')
 const authRoutes = require('./routes/auth')
 const varMiddleware = require('./middleware/variables')
-
-
+const userMiddleware = require('./middleware/user')
+const User = require('./models/users')
 
 
 const path = require('path')
@@ -22,6 +22,16 @@ async function start() {
     try {
         const urmMB = "mongodb+srv://maksim:8u2upvDe0W1dp945@cluster0-mjkka.mongodb.net/request"
         await mongoose.connect(urmMB, {useNewUrlParser: true})
+        const candidate = await User.findOne()
+        if (!candidate) {
+            const user = new User({
+                email: '_max_kot@mail.ru',
+                name: 'Maksim',
+                telegrammId: ' ',
+                permission: true
+            })
+            await user.save()
+        }
         app.listen(3000, () => {
             console.log('Server started')
         })
@@ -45,14 +55,15 @@ app.set('views', 'views')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(session({
-    secret:'some secret value',
+    secret: 'some secret value',
     resave: false,
     saveUnitialized: false
 }))
 app.use(varMiddleware)
+app.use(userMiddleware)
 
 app.use("/", addLinkRoutes)
-app.use( "/auth",authRoutes)
+app.use("/auth", authRoutes)
 
 //рандомная задержка
 let randomInt = () => {

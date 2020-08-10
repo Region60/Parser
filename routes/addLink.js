@@ -10,12 +10,15 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', async (req, res) => {
+
     const request = new Request({
-        url: req.body.link
+        url: req.body.link,
+        requestId: req.user  //в схеме указали ObjectId и монгуст поймет что надо использовать поле _id
     })
     try {
         console.log('save')
         await request.save()
+        res.redirect('/')
     } catch (e) {
             console.log(e)
     }
