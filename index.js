@@ -2,6 +2,8 @@ const express = require('express')
 const app = express();
 const exphbs = require('express-handlebars');
 const session = require('express-session');
+const csrf = require('csurf')
+const MongoStore = require('connect-mongodb-session')(session)
 const needle = require('needle');
 const tress = require('tress')
 const cheerio = require('cheerio')
@@ -11,27 +13,19 @@ const homeRoutes = require('./routes/home')
 const addLinkRoutes = require('./routes/addLink')
 const authRoutes = require('./routes/auth')
 const varMiddleware = require('./middleware/variables')
-const userMiddleware = require('./middleware/user')
 const User = require('./models/users')
-
-
 const path = require('path')
 const fs = require('fs')
 
+const MONGODB_URI = "mongodb+srv://maksim:8u2upvDe0W1dp945@cluster0-mjkka.mongodb.net/request"
+
+
 async function start() {
     try {
-        const urmMB = "mongodb+srv://maksim:8u2upvDe0W1dp945@cluster0-mjkka.mongodb.net/request"
-        await mongoose.connect(urmMB, {useNewUrlParser: true})
-        const candidate = await User.findOne()
-        if (!candidate) {
-            const user = new User({
-                email: '_max_kot@mail.ru',
-                name: 'Maksim',
-                telegrammId: ' ',
-                permission: true
-            })
-            await user.save()
-        }
+        await mongoose.connect(MONGODB_URI, {
+            useNewUrlParser: true,
+            useFindAndModify:false
+        })
         app.listen(3000, () => {
             console.log('Server started')
         })
@@ -40,14 +34,19 @@ async function start() {
     }
 
 }
-
 start()
-
 
 const hbs = exphbs.create({
     defaultLayout: 'main',
     extname: 'hbs'
 })
+
+const store = new MongoStore({
+    collection: 'sessions',
+    uri: MONGODB_URI
+
+})
+
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 app.set('views', 'views')
@@ -57,10 +56,11 @@ app.use(express.urlencoded({extended: true}))
 app.use(session({
     secret: 'some secret value',
     resave: false,
-    saveUnitialized: false
+    saveUninitialized: false,
+    store
 }))
+app.use(csrf())
 app.use(varMiddleware)
-app.use(userMiddleware)
 
 app.use("/", addLinkRoutes)
 app.use("/auth", authRoutes)

@@ -1,22 +1,70 @@
 const {Router} = require('express')
+const bcrypt = require('bcryptjs')
+const User = require('../models/users')
 const router = Router()
 
-router.get('/login', async (req,res) => {
+
+router.get('/login', async (req, res) => {
     res.render('auth/login', {
-        title:'Авторизация',
+        title: 'Авторизация',
         isLogin: true
     })
 })
 
-router.get('/logout', async (req,res) => {
-    req.session.destroy(()=>{
+router.get('/logout', async (req, res) => {
+    req.session.destroy(() => {
         res.redirect('/auth/login#login')
     })
 })
 
-router.post('/login', async (req,res) => {
-    req.session.isAuthenticated = true
-    res.redirect('/')
-    })
+router.post('/login', async (req, res) => {
+    try {
+        const {email, password} = req.body
+        const candidate = await User.findOne({email})
+        if (candidate) {
+            const areSame = await bcrypt.compare(password, candidate.password)
+            if (areSame) {
+                const user = await User.findById('5f31b6ab44c7463190f185d4')
+                req.session.user = candidate
+                req.session.isAuthenticated = true
+                req.session.save(err => {
+                    if (err) {
+                        throw err
+                    }
+                    res.redirect('/')
+
+                })
+            } else {
+                res.redirect('/auth/login#login')
+            }
+        } else {
+            res.redirect('/auth/login#login')
+        }
+    } catch (e) {
+        console.log(e)
+    }
+})
+
+router.post('/register', async (req, res) => {
+    try {
+        const {email, password, repeat, name} = req.body
+        const candidate = await User.findOne({email})
+        if (candidate) {
+            res.redirect('/auth/login#register')
+        } else {
+            const hashPassword = await bcrypt.hash(password, 10)
+
+            const user = new User({
+                email, name,password: hashPassword, telegrammId: " ", permission: true
+            })
+            await user.save(
+                res.redirect('/auth/login#login')
+            )
+        }
+    } catch (e) {
+        console.log(e)
+    }
+})
+
 
 module.exports = router
