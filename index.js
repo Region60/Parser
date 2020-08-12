@@ -14,15 +14,16 @@ const homeRoutes = require('./routes/home')
 const addLinkRoutes = require('./routes/addLink')
 const authRoutes = require('./routes/auth')
 const varMiddleware = require('./middleware/variables')
+const keys = require('./keys/index')
 const path = require('path')
 const fs = require('fs')
 
-const MONGODB_URI = "mongodb+srv://maksim:8u2upvDe0W1dp945@cluster0-mjkka.mongodb.net/request"
+
 
 
 async function start() {
     try {
-        await mongoose.connect(MONGODB_URI, {
+        await mongoose.connect(keys.MONGODB_URI, {
             useNewUrlParser: true,
             useFindAndModify:false
         })
@@ -43,7 +44,7 @@ const hbs = exphbs.create({
 
 const store = new MongoStore({
     collection: 'sessions',
-    uri: MONGODB_URI
+    uri: keys.MONGODB_URI
 
 })
 
@@ -54,7 +55,7 @@ app.set('views', 'views')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(session({
-    secret: 'some secret value',
+    secret: keys.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store
