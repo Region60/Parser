@@ -71,20 +71,16 @@ function crawl(url, callback) {
                 result.push(item)
             } else {
                 //если в массиве объявления с id и name такими как item
-
                 if (!result.find(i => i.id === item.id)
                 ) {
-                    //console.log (item)
                     result.push(item)
                     //bot.sendMessage(1322775332, item.link);
-                    // console.log('добавленно объявлние: ' + item.name)
                 }
             }
         })
         addPageofPaginator($)
         console.log('объявлений:' + result.length)
         console.log('status code ' + res.statusCode)
-
         callback()
     });
 }

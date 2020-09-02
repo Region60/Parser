@@ -10,6 +10,7 @@ const addLinkRoutes = require('./routes/addLink')
 const authRoutes = require('./routes/auth')
 const varMiddleware = require('./middleware/variables')
 const keys = require('./keys/index')
+const startCr = require('./modules/queue/queue')
 
 async function start() {
     try {
@@ -57,4 +58,4 @@ app.use(varMiddleware)
 app.use("/", addLinkRoutes)
 app.use("/auth", authRoutes)
 
-
+startCr()
