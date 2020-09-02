@@ -27,7 +27,6 @@ let startCr = () =>
 
 //инициализация и обработка редиректа
 needle.get(sCookie, function (err, res) {
-
     fs.readFile('./data/data.json', function (error, data) {
         result = JSON.parse(data)
     });
@@ -38,6 +37,20 @@ needle.get(sCookie, function (err, res) {
 //запуск краулинга
     startCr()
 })
+
+let addPageofPaginator = ($) => {
+    let paginator = $('.pagination-item-1WyVp')
+    let activPage = $('.pagination-item_active-25YwT')
+    //console.log('активная страница: ' + activPage.text())
+    if (activPage.text() === '1') {
+        let pageCount = (paginator[7].children[0].data)
+        // console.log('кол-во страниц: ' + pageCount)
+        for (let i = 2; i < +pageCount + 1; i++) {
+            //  console.log('добавлена в очередь страница: ' + URL + '&p=' + i)
+            q.push(URL + '&p=' + i)
+        }
+    }
+}
 
 function crawl(url, callback) {
     q.pause()
@@ -68,21 +81,7 @@ function crawl(url, callback) {
                 }
             }
         })
-
-        let paginator = $('.pagination-item-1WyVp')
-        let activPage = $('.pagination-item_active-25YwT')
-        //console.log('активная страница: ' + activPage.text())
-        if (activPage.text() === '1') {
-            let pageCount = (paginator[7].children[0].data)
-
-            // console.log('кол-во страниц: ' + pageCount)
-
-            for (let i = 2; i < +pageCount + 1; i++) {
-                //  console.log('добавлена в очередь страница: ' + URL + '&p=' + i)
-                q.push(URL + '&p=' + i)
-            }
-        }
-
+        addPageofPaginator($)
         console.log('объявлений:' + result.length)
         console.log('status code ' + res.statusCode)
 
