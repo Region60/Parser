@@ -1,17 +1,31 @@
 const {Router} = require('express')
-const nodemailer = require('nodemailer')
-const sendgrid = require('nodemailer-sendgrid-transport')
+
+/*const nodemailer = require('nodemailer')
+const sendgrid = require('nodemailer-sendgrid-transport')*/
+const sgMail = require('@sendgrid/mail');
+
 const bcrypt = require('bcryptjs')
 const User = require('../models/users')
 const key = require('../keys')
 const regEmail = require('../emails/registratrion')
 const router = Router()
 
+/*
 const transporter = nodemailer.createTransport(sendgrid({
     auth: {
         api_key: key.SENDGRID_API_KEY
     }
 }))
+*/
+sgMail.setApiKey(key.SENDGRID_API_KEY)
+
+const msg = {
+    to: 'test@example.com',
+    from: '_max_kot@mail.ru',
+    subject: 'Sending with Twilio SendGrid is Fun',
+    text: 'and easy to do anywhere, even with Node.js',
+    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+}
 
 
 router.get('/login', async (req, res) => {
@@ -74,7 +88,14 @@ router.post('/register', async (req, res) => {
             })
             await user.save()
             res.redirect('/auth/login#login')
-            await transporter.sendMail(regEmail(email))
+            await sgMail.send(msg)
+                .then(() => {}, error => {
+                    console.error(error);
+
+                    if (error.response) {
+                        console.error(error.response.body)
+                    }
+                });
         }
     } catch (e) {
         console.log(e)
