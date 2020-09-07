@@ -30,4 +30,12 @@ router.post('/',auth,  async (req, res) => {
     console.log("TEXT")*/
 })
 
+router.post('/addLink', async (req, res) => {
+    console.log(req.body.link)
+    res.render('index', {
+        title: "Главнаая страница",
+        isHome: true
+    })
+})
+
 module.exports = router
