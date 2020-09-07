@@ -58,4 +58,4 @@ app.use(varMiddleware)
 app.use("/", addLinkRoutes)
 app.use("/auth", authRoutes)
 
-
+startCr()
