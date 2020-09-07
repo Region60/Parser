@@ -2,6 +2,7 @@ const {Router} = require('express')
 const router = Router()
 const Request =require('../models/request')
 const auth = require('../middleware/auth')
+const startCr = require('../modules/queue/queue')
 
 
 router.get('/',auth, async (req, res) => {
@@ -21,8 +22,7 @@ router.post('/',auth,  async (req, res) => {
         console.log('save')
         await request.save()
         res.redirect('/')
-    } catch (e) {
-            console.log(e)
+y            console.log(e)
     }
 
 
@@ -31,7 +31,7 @@ router.post('/',auth,  async (req, res) => {
 })
 
 router.post('/addLink', async (req, res) => {
-    console.log(req.body.link)
+    startCr(req.body.link)
     res.render('index', {
         title: "Главнаая страница",
         isHome: true

@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s6"><a class="active" href="#login">Войти</a></li>
-                <li class="tab col s6"><a href="#register">Регистрация</a></li>
+                <li class="tab col s3"><a class="active" href="#login">Войти</a></li>
+                <li class="tab col s3"><a href="#register">Регистрация</a></li>
             </ul>
         </div>
         <div id="login" class="col s6 offset s3">
@@ -12,7 +12,7 @@
                 <p class="alert">{{loginError}}</p>
             {{/if}}
 
-            <h1>Войти в магазин</h1>
+            <h4>Войти в магазин</h4>
             <form action="/auth/login" method="POST">
                 <div class="input-field">
                     <input id="email" name="email" type="email" class="validate" required>
@@ -37,7 +37,7 @@
                 <p class="alert">{{registerError}}</p>
             {{/if}}
 
-            <h1>Создать аккаунт</h1>
+            <h4>Создать аккаунт</h4>
             <form action="/auth/register" method="POST">
                 <div class="input-field">
                     <input id="remail" name="email" type="email" class="validate" required>

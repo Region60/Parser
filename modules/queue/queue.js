@@ -23,8 +23,8 @@ let urlHomePage = 'https://www.avito.ru/'
 let sCookie = 'https://www.avito.ru/pskov'
 let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&pmax=150000&pmin=50000&radius=300&s=104&proprofile=1';
 
-let startCr = () =>
-    q.push(URL)
+let startCr = (addUrl) =>
+    q.push(addUrl)
 
 //инициализация и обработка редиректа
 needle.get(sCookie, function (err, res) {
@@ -36,7 +36,6 @@ needle.get(sCookie, function (err, res) {
     //установка куки
     httpOptions.cookies = res.cookies
 //запуск краулинга
-    startCr()
 })
 
 let addPageofPaginator = ($) => {
@@ -54,7 +53,7 @@ let addPageofPaginator = ($) => {
 }
 
 function crawl(url, callback) {
-    q.pause()
+    //q.pause()
     needle.get(url, function (err, res) {
         if (err) throw err
         let $ = cheerio.load(res.body)
