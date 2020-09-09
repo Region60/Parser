@@ -1,18 +1,18 @@
 const {Router} = require('express')
 const router = Router()
-const Request =require('../models/request')
+const Request = require('../models/request')
 const auth = require('../middleware/auth')
 const startCr = require('../modules/queue/queue')
 
 
-router.get('/',auth, async (req, res) => {
+router.get('/', auth, async (req, res) => {
     res.render('index', {
         title: "Главнаая страница",
         isHome: true
     })
 })
 
-router.post('/',auth,  async (req, res) => {
+router.post('/', auth, async (req, res) => {
 
     const request = new Request({
         url: req.body.link,
@@ -22,7 +22,9 @@ router.post('/',auth,  async (req, res) => {
         console.log('save')
         await request.save()
         res.redirect('/')
-y            console.log(e)
+
+    }catch (e) {
+        console.log(e)
     }
 
 
