@@ -76,7 +76,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/register', async (req, res) => {
     try {
-        const {email, password, repeat, name} = req.body
+        const {email, password, repeat, name, telegramId} = req.body
         const candidate = await User.findOne({email})
         if (candidate) {
             req.flash('registerError', 'Пользователь с таким email уже существует')
@@ -84,7 +84,7 @@ router.post('/register', async (req, res) => {
         } else {
             const hashPassword = await bcrypt.hash(password, 10)
             const user = new User({
-                email, name, password: hashPassword, telegrammId: " ", permission: true
+                email, name, password: hashPassword, telegramId, permission: true
             })
             await user.save()
             res.redirect('/auth/login#login')
