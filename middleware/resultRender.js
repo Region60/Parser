@@ -1,5 +1,8 @@
- function ResRender(req,res,next) {
-
+ function resRender(req,res,next) {
+     res.render('index', {
+         title: "Главнаая страница",
+         isHome: true
+     })
 next()
 }
-module.exports = ResRender
+module.exports = resRender

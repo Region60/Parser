@@ -9,7 +9,7 @@ const mongoose = require('mongoose')
 const homeRouters = require('./routes/home')
 const authRoutes = require('./routes/auth')
 const varMiddleware = require('./middleware/variables')
-const ResRender = require('./middleware/resultRender')
+const resRenderMiddleware = require('./middleware/resultRender')
 const keys = require('./keys/index')
 
 async function start() {
@@ -54,7 +54,7 @@ app.use(session({
 app.use(csrf())
 app.use(flash())
 app.use(varMiddleware)
-app.use(ResRender)
+app.use(resRenderMiddleware)
 
 app.use("/", homeRouters)
 app.use("/auth", authRoutes)

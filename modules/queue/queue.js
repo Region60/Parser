@@ -52,6 +52,10 @@ let addPageofPaginator = ($) => {
     }
 }
 
+let saveResult = () => {
+    fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
+}
+
 function crawl(url, callback) {
     //q.pause()
     needle.get(url, function (err, res) {
@@ -85,11 +89,9 @@ function crawl(url, callback) {
     });
 }
 
-q.drain = function () {
-    //console.log('запись в файл...')
-    fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
+q.drain =
+    saveResult()
     console.log('The End')
-    //setTimeout( startCr, 600000    )
-}
+
 
 module.exports = startCr
