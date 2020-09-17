@@ -86,7 +86,6 @@ function crawl(url, callback) {
 }
 
 q.drain = function () {
-    //console.log('запись в файл...')
     fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
     console.log('The End')
     //setTimeout( startCr, 600000    )
