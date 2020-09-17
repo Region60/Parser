@@ -31,7 +31,8 @@ router.post('/', auth, async (req, res) => {
 })
 
 router.post('/addLink', async (req, res) => {
-    startCr(req.body.link)
+    let resultAr = startCr(req.body.link)
+    console.log('result' + resultAr)
     res.render('index', {
         title: "Главнаая страница",
         isHome: true

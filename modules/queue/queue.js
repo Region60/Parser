@@ -4,7 +4,6 @@ const bot = require('../telegramBot/telegramBot')
 const needle = require('needle');
 const cheerio = require('cheerio')
 const fs = require('fs')
-const resRender = require('../../middleware/resultRender')
 
 //рандомная задержка
 let randomInt = () => {
@@ -24,8 +23,16 @@ let urlHomePage = 'https://www.avito.ru/'
 let sCookie = 'https://www.avito.ru/pskov'
 let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&pmax=150000&pmin=50000&radius=300&s=104&proprofile=1';
 
-let startCr = (addUrl) =>
+let startCr = (addUrl) => {
     q.push(addUrl)
+    q.drain = () => {
+        fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
+        console.log('The End')
+    }
+    console.log(result[1])
+
+    return 'result'
+}
 
 //инициализация и обработка редиректа
 needle.get(sCookie, function (err, res) {
@@ -53,9 +60,7 @@ let addPageofPaginator = ($) => {
     }
 }
 
-function saveResult() {
-    fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
-}
+
 
 function crawl(url, callback) {
     //q.pause()
@@ -91,11 +96,6 @@ function crawl(url, callback) {
 }
 
 
-q.drain = () => {
-    saveResult()
-    console.log('The End')
-
-}
 
 
 
