@@ -4,6 +4,7 @@ const bot = require('../telegramBot/telegramBot')
 const needle = require('needle');
 const cheerio = require('cheerio')
 const fs = require('fs')
+const resRender = require('../../middleware/resultRender')
 
 //рандомная задержка
 let randomInt = () => {
@@ -52,6 +53,10 @@ let addPageofPaginator = ($) => {
     }
 }
 
+function saveResult() {
+    fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
+}
+
 function crawl(url, callback) {
     //q.pause()
     needle.get(url, function (err, res) {
@@ -85,10 +90,13 @@ function crawl(url, callback) {
     });
 }
 
-q.drain = function () {
-    fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
+
+q.drain = () => {
+    saveResult()
     console.log('The End')
-    //setTimeout( startCr, 600000    )
+
 }
+
+
 
 module.exports = startCr

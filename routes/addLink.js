@@ -4,7 +4,6 @@ const Request = require('../models/request')
 const auth = require('../middleware/auth')
 const startCr = require('../modules/queue/queue')
 
-
 router.get('/', auth, async (req, res) => {
     res.render('index', {
         title: "Главнаая страница",

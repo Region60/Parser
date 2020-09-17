@@ -10,7 +10,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    telegrammId: {
+    telegramId: {
         type: String,
         required: true
     },

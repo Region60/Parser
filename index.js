@@ -6,7 +6,7 @@ const session = require('express-session');
 const csrf = require('csurf')
 const MongoStore = require('connect-mongodb-session')(session)
 const mongoose = require('mongoose')
-const addLinkRoutes = require('./routes/addLink')
+const homeRouters = require('./routes/home')
 const authRoutes = require('./routes/auth')
 const varMiddleware = require('./middleware/variables')
 const keys = require('./keys/index')
@@ -54,6 +54,6 @@ app.use(csrf())
 app.use(flash())
 app.use(varMiddleware)
 
-app.use("/", addLinkRoutes)
+app.use("/", homeRouters)
 app.use("/auth", authRoutes)
 
