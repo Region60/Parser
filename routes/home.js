@@ -13,7 +13,6 @@ router.get('/', auth, async (req, res) => {
 })
 
 router.post('/', auth, async (req, res) => {
-
     const request = new Request({
         url: req.body.link,
         requestId: req.user  //в схеме указали ObjectId и монгуст поймет что надо использовать поле _id
@@ -33,7 +32,8 @@ router.post('/', auth, async (req, res) => {
 })
 
 router.post('/addLink', async (req, res) => {
-    startCr(req.body.link)
+    let requests = startCr(req.body.link)
+console.log(requests)
     res.render('index', {
         title: "Главнаая страница",
         isHome: true

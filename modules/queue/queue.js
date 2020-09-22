@@ -29,7 +29,6 @@ let startCr = (addUrl) => {
         fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
         console.log('The End')
     }
-    console.log(result[1])
 
     return 'result'
 }
