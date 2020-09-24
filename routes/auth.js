@@ -88,10 +88,9 @@ router.post('/register', async (req, res) => {
             })
             await user.save()
             res.redirect('/auth/login#login')
-            await sgMail.send(msg)
+            await sgMail.send(regEmail(email))
                 .then(() => {}, error => {
                     console.error(error);
-
                     if (error.response) {
                         console.error(error.response.body)
                     }
