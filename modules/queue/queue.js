@@ -25,12 +25,6 @@ let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&pmax=150000&pmin=50
 
 let startCr = (addUrl) => {
     q.push(addUrl)
-    q.drain = () => {
-        fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
-        console.log('The End')
-    }
-
-    return 'result'
 }
 
 //инициализация и обработка редиректа
@@ -94,6 +88,10 @@ function crawl(url, callback) {
     });
 }
 
+q.drain = () => {
+    fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
+    console.log('The End')
+}
 
 
 

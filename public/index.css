@@ -6,7 +6,11 @@ background-color: rgb(17, 139, 139);
     padding: 0 2rem;
 }
 .auth {
+    margin-top: 0.3rem;
     padding-top: 0.3rem;
+   /* border: solid;
+    border-color: rgb(17, 139, 139);*/
+    width: 40rem;
 }
 
 .course-form {

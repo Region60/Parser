@@ -10,6 +10,8 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    resetToken: String,
+    resetTokenExp: Date,
     telegramId: {
         type: String,
         required: true
