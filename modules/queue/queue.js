@@ -14,16 +14,16 @@ let q = tress(crawl, randomInt())
 
 //urlHomePage = (res.headers['x-frame-options'].slice(11))
 
-//Куки
-let httpOptions = {}
 
-//массив с объявами
+let httpOptions = {}
 let result = []
 let urlHomePage = 'https://www.avito.ru/'
 let sCookie = 'https://www.avito.ru/pskov'
 let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&pmax=150000&pmin=50000&radius=300&s=104&proprofile=1';
+let telegramID = ''
 
-let startCr = (addUrl) => {
+let startCr = (addUrl, telegramId) => {
+    telegramID = telegramId
     q.push(addUrl)
 }
 
@@ -53,8 +53,6 @@ let addPageofPaginator = ($) => {
     }
 }
 
-
-
 function crawl(url, callback) {
     //q.pause()
     needle.get(url, function (err, res) {
@@ -77,7 +75,7 @@ function crawl(url, callback) {
                 if (!result.find(i => i.id === item.id)
                 ) {
                     result.push(item)
-                    //bot.sendMessage(1322775332, item.link);
+                    //bot.sendMessage(telegramID, item.link);
                 }
             }
         })
@@ -92,8 +90,5 @@ q.drain = () => {
     fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
     console.log('The End')
 }
-
-
-
 
 module.exports = startCr

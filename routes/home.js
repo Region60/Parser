@@ -32,7 +32,7 @@ router.post('/', auth, async (req, res) => {
 })
 
 router.post('/addLink', async (req, res) => {
-     startCr(req.body.link)
+     startCr(req.body.link, req.session.user.telegramId)
     res.render('index', {
         title: "Главнаая страница",
         isHome: true
