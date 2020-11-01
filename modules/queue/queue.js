@@ -1,6 +1,5 @@
 const tress = require('tress')
 const bot = require('../telegramBot/telegramBot')
-//const homeRoutes = require('./routes/home')
 const needle = require('needle');
 const cheerio = require('cheerio')
 const fs = require('fs')
@@ -14,24 +13,43 @@ let q = tress(crawl, randomInt())
 
 //urlHomePage = (res.headers['x-frame-options'].slice(11))
 
-
 let httpOptions = {}
 let result = []
 let urlHomePage = 'https://www.avito.ru/'
 let sCookie = 'https://www.avito.ru/pskov'
-let URL = urlHomePage + 'pskov/mototsikly_i_mototehnika?cd=1&pmax=150000&pmin=50000&radius=300&s=104&proprofile=1';
+let namesFile = ''
+let URL = ''
 let telegramID = ''
 
 let startCr = (addUrl, telegramId) => {
     telegramID = telegramId
+    URL = addUrl
+    getResult(addUrl)
     q.push(addUrl)
+}
+function getResult(url) {
+    function readFile () {
+        fs.readFile(`./data/${getNameFile(url)}.json`, function (error, data) {
+            result = JSON.parse(data)
+        })
+    }
+    if(fs.existsSync(`./data/${getNameFile(url)}.json`)){
+        readFile()
+    }else {
+        fs.writeFileSync(`./data/${getNameFile(url)}.json`, '[]')
+        readFile()
+
+    }
+
+}
+
+function getNameFile (url) {
+  let nameFile = url.slice(21).split('/').slice(0,2).join('_')
+    return nameFile
 }
 
 //инициализация и обработка редиректа
 needle.get(sCookie, function (err, res) {
-    fs.readFile('./data/data.json', function (error, data) {
-        result = JSON.parse(data)
-    });
     if (err || res.statusCode !== 200)
         throw err || res.statusCode
     //установка куки
@@ -39,15 +57,16 @@ needle.get(sCookie, function (err, res) {
 //запуск краулинга
 })
 
-let addPageofPaginator = ($) => {
+let addPageOfPaginator = ($) => {
     let paginator = $('.pagination-item-1WyVp')
     let activPage = $('.pagination-item_active-25YwT')
     //console.log('активная страница: ' + activPage.text())
     if (activPage.text() === '1') {
-        let pageCount = (paginator[7].children[0].data)
-        // console.log('кол-во страниц: ' + pageCount)
+        let getCountPage = paginator.length - 2       //узнаем колисество страниц в паджинаторе
+        let pageCount = (paginator[getCountPage].children[0].data)
+        //console.log('кол-во страниц: ' + pageCount)
         for (let i = 2; i < +pageCount + 1; i++) {
-            //  console.log('добавлена в очередь страница: ' + URL + '&p=' + i)
+            //console.log('добавлена в очередь страница: ' + URL + '&p=' + i)
             q.push(URL + '&p=' + i)
         }
     }
@@ -79,7 +98,7 @@ function crawl(url, callback) {
                 }
             }
         })
-        addPageofPaginator($)
+        addPageOfPaginator($)
         console.log('объявлений:' + result.length)
         console.log('status code ' + res.statusCode)
         callback()
@@ -87,7 +106,7 @@ function crawl(url, callback) {
 }
 
 q.drain = () => {
-    fs.writeFileSync('./data/data.json', JSON.stringify(result, null, 4))
+    fs.writeFileSync(`./data/${getNameFile(URL)}.json`, JSON.stringify(result, null, 4))
     console.log('The End')
 }
 

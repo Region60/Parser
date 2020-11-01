@@ -33,10 +33,11 @@ router.post('/', auth, async (req, res) => {
 
 router.post('/addLink', async (req, res) => {
      startCr(req.body.link, req.session.user.telegramId)
-    res.render('index', {
-        title: "Главнаая страница",
+    res.render('runParser', {
+        title: "Парсинг запущен",
         isHome: true
     })
 })
+
 
 module.exports = router
