@@ -2,6 +2,8 @@ const tress = require('tress')
 const bot = require('../telegramBot/telegramBot')
 const needle = require('needle');
 const cheerio = require('cheerio')
+const getResult = require('./getResult')
+const getNameFile = require('./getNameFile')
 const fs = require('fs')
 
 //рандомная задержка
@@ -17,36 +19,24 @@ let httpOptions = {}
 let result = []
 let urlHomePage = 'https://www.avito.ru/'
 let sCookie = 'https://www.avito.ru/pskov'
-let namesFile = ''
 let URL = ''
 let telegramID = ''
 
-let startCr = (addUrl, telegramId) => {
-    telegramID = telegramId
-    URL = addUrl
-    getResult(addUrl)
-    q.push(addUrl)
-}
-function getResult(url) {
-    function readFile () {
-        fs.readFile(`./data/${getNameFile(url)}.json`, function (error, data) {
-            result = JSON.parse(data)
-        })
-    }
-    if(fs.existsSync(`./data/${getNameFile(url)}.json`)){
-        readFile()
-    }else {
-        fs.writeFileSync(`./data/${getNameFile(url)}.json`, '[]')
-        readFile()
-
+let startCr = (selector, telegramId) => {
+    if(typeof selector === 'string') {
+        telegramID = telegramId
+        URL = selector
+        getResult(getNameFile(selector))
+        q.push(selector)
+    }else{
+        q.kill()
     }
 
 }
 
-function getNameFile (url) {
-  let nameFile = url.slice(21).split('/').slice(0,2).join('_')
-    return nameFile
-}
+
+//сочиняет имя для файла
+
 
 //инициализация и обработка редиректа
 needle.get(sCookie, function (err, res) {

@@ -3,6 +3,7 @@ const router = Router()
 const Request = require('../models/request')
 const auth = require('../middleware/auth')
 const startCr = require('../modules/queue/queue')
+const stopParser = require('../modules/queue/queue')
 
 
 router.get('/', auth, async (req, res) => {
@@ -37,6 +38,11 @@ router.post('/addLink', async (req, res) => {
         title: "Парсинг запущен",
         isHome: true
     })
+})
+
+router.get('/stopParser', async(req,res)=>{
+startCr()
+    res.redirect('/')
 })
 
 
