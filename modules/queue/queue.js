@@ -14,7 +14,8 @@ let randomInt = () => {
 let q = tress(crawl, randomInt())
 
 //urlHomePage = (res.headers['x-frame-options'].slice(11))
-
+let paginatorStr = '.pagination-item-1WyVp'
+let activPageStr = '.pagination-item_active-25YwT'
 let httpOptions = {}
 let result = []
 let urlHomePage = 'https://www.avito.ru/'
@@ -31,12 +32,7 @@ let startCr = (selector, telegramId) => {
     }else{
         q.kill()
     }
-
 }
-
-
-//сочиняет имя для файла
-
 
 //инициализация и обработка редиректа
 needle.get(sCookie, function (err, res) {
@@ -48,8 +44,8 @@ needle.get(sCookie, function (err, res) {
 })
 
 let addPageOfPaginator = ($) => {
-    let paginator = $('.pagination-item-1WyVp')
-    let activPage = $('.pagination-item_active-25YwT')
+    let paginator = $(paginatorStr)
+    let activPage = $(activPageStr)
     //console.log('активная страница: ' + activPage.text())
     if (activPage.text() === '1') {
         let getCountPage = paginator.length - 2       //узнаем колисество страниц в паджинаторе
@@ -97,7 +93,7 @@ function crawl(url, callback) {
 
 q.drain = () => {
     fs.writeFileSync(`./data/${getNameFile(URL)}.json`, JSON.stringify(result, null, 4))
-    console.log('The End')
+        console.log('The End')
 }
 
 module.exports = startCr
