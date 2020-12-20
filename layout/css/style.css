@@ -1,0 +1,226 @@
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1170px; /*чтобы не было скрола на экранах меньше 1170*/
+    margin: 0 auto; /*центрирование*/
+    padding: 0 15px; /*при маленьких экранах не прилипало к стенкам*/
+}
+
+body {
+    font-family: 'PT Serif', serif;
+
+    font-weight: 400;
+    font-size: 14px; /*размер шрифта*/
+    line-height: 18px; /*высота строки*/
+    color: #5e5e5e;
+}
+
+.header__top {
+    background-color: #303030;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header__btn {
+    float: right;
+    line-height: 36px; /*высота строки*/
+    font-family: 'Roboto', sans-serif; /*шрифт элемента*/
+    color: #1b1b1b;
+    background-color: #ffc222;
+    padding: 5px 20px 4px 50px;
+    font-size: 16px;
+    position: relative;
+}
+
+.header__btn:before {
+    content: "\f0b1";
+    font-family: "icomoon";
+    position: absolute;
+    left: 22px;
+    color: #1b1b1b;
+}
+
+.header__contacts:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.header__phone,
+.header__email {
+    color: #cbcacb;
+    letter-spacing: 0.25px; /*растояние между буквами*/
+    line-height: 45px;
+    position: relative;
+}
+
+.header__phone {
+    padding-left: 20px;
+    padding-right: 30px;
+}
+
+.header__phone:before {
+    content: "\f095";
+    font-family: "icomoon";
+    position: absolute;
+    left: 0;
+    color: #ffc222;
+}
+
+.header__email {
+    padding-left: 24px;
+}
+
+.header__email:before {
+    content: "\f003";
+    font-family: "icomoon";
+    position: absolute;
+    left: 0;
+    color: #ffc222;
+}
+
+.header__content {
+    padding: 34px 0px 23px;
+}
+
+.header__content-inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu li {
+    display: inline-block; /*размещение элементов в однустроку*/
+}
+
+.menu a {
+    color: #323232;
+    font-size: 16px;
+    line-height: 36px;
+    border: 1px solid transparent;
+    padding: 0px 16px;
+    transition: all .3s;
+}
+
+.menu a:hover {
+    border-color: #ffc222;
+}
+
+.menu li + li { /*отступает Ли от ли 10пикс, первый не отступает*/
+    padding-left: 10px;
+}
+
+#modal {
+    display: none;
+}
+
+.slider {
+    background-image: url(../img/slider-fon.jpg);
+    background-repeat: no-repeat; /*чтобы не повторялась*/
+    background-size: cover; /*чтобы растягивалась*/
+    background-position: center;
+    min-height: 500px; /*чтобы корректно отображалось при  слайдах разного размера*/
+}
+
+.slider__item-content {
+    text-align: center;
+    padding-top: 110px;
+    max-width: 665px;
+    margin: 0 auto; /*центрируем*/
+}
+
+.slider__title {
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: 36px;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    margin-bottom: 22px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.slider-text {
+    line-height: 24px;
+    font-size: 18px;
+    color: #d3d2d2;
+    margin-bottom: 50px;
+}
+
+
+.default-btn {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    padding: 8px 30px 8px 24px;
+    border: 1px solid #ffc222;
+    border-right-width: 20px;
+    position: relative;
+}
+
+.default-btn:after {
+    content: "\f105";
+    font-family: 'icomoon', serif;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -12px;
+
+}
+
+.slider__inner {
+    position: relative;
+}
+
+.slick-btn {
+    position: absolute;
+    top: 70%;
+    z-index: 3; /*чтобы были поверх других элементов*/
+    width: 40px;
+    height: 40px;
+    border: 1px solid #fff;
+    background-color: transparent;
+}
+
+.slick-btn:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'icomoon';
+    color: #fff;
+
+}
+
+.slick-next:before{
+    content: "\f105";
+}
+
+.slick-prev:before{
+    content: "\f104";
+}
+
+.slick-next {
+    right: 0;
+}
+
+.slick-prev {
+    left: 0;
+}
+
+
