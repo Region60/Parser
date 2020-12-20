@@ -1,21 +1,21 @@
 <nav>
     <div class="nav-wrapper">
-        <a href="/" class="brand-logo">Parser</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <a href="/" class="brand-logo green-text text-darken-1">Parser</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down ">
 
             {{#if isHome}}
-                <li class="active"><a href="/">Главная</a></li>
+                <li class="active"><a class="green-text text-darken-1" href="/">Главная</a></li>
             {{else}}
-                <li><a href="/">Главная</a></li>
+                <li><a class="green-text text-darken-1" href="/">Главная</a></li>
             {{/if}}
 
             {{#if isAuth}}
-                <li><a href="/auth/logout">Выйти</a></li>
+                <li><a class="green-text text-darken-1" href="/auth/logout">Выйти</a></li>
 
             {{else}}
 
                 {{#if isLogin}}
-                    <li class="active"><a href="/auth/login">Войти</a></li>
+                    <li class="active"><a class="green-text text-darken-1" href="/auth/login">Войти</a></li>
                 {{else}}
                     <li><a href="/auth/login">Войти</a></li>
                 {{/if}}

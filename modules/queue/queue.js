@@ -5,10 +5,11 @@ const cheerio = require('cheerio')
 const getResult = require('./getResult')
 const getNameFile = require('./getNameFile')
 const fs = require('fs')
+const path = require('path')
 
 //рандомная задержка
 let randomInt = () => {
-    return -Math.floor(Math.random() * (7000 + 3000))
+    return -Math.floor(Math.random() * (7000 + 2000))
 }
 
 let q = tress(crawl, randomInt())
@@ -19,18 +20,20 @@ let activPageStr = '.pagination-item_active-25YwT'
 let httpOptions = {}
 let result = []
 let urlHomePage = 'https://www.avito.ru/'
-let sCookie = 'https://www.avito.ru/pskov'
+let sCookie = urlHomePage + 'pskov'
 let URL = ''
 let telegramID = ''
 
 let startCr = (selector, telegramId) => {
-    if(typeof selector === 'string') {
+    if (typeof selector === 'string') {
         telegramID = telegramId
         URL = selector
-        getResult(getNameFile(selector))
+        result = getResult(getNameFile(selector))
         q.push(selector)
-    }else{
+    } else {
         q.kill()
+        result = []
+
     }
 }
 
@@ -63,16 +66,15 @@ function crawl(url, callback) {
     needle.get(url, function (err, res) {
         if (err) throw err
         let $ = cheerio.load(res.body)
-        let advertisements = $('.item_table')
+        let advertisements = $('div[data-marker=item]')
         advertisements.each(function (index) {
             let item = {
                 id: $(this).attr('id'),
-                name: $(this).find('.snippet-link').attr('title'),
-                date: $(this).find('.snippet-date-info').attr('data-tooltip'),
-                link: 'https://www.avito.ru' + $(this).find('.snippet-link').attr('href'),
-                price: $(this).find('.snippet-price').text().slice(2, -3)
+                name: $(this).find('a[itemprop=url]').text(),
+                //date: $(this).find('div[data-marker=item-date]').text(),
+                link: urlHomePage + $(this).find('a[itemprop=url]').attr('href'),
+                price: $(this).find('.price-text-1HrJ_').text()
             }
-
             if (result.length === 0) {
                 result.push(item)
             } else {
@@ -81,19 +83,22 @@ function crawl(url, callback) {
                 ) {
                     result.push(item)
                     //bot.sendMessage(telegramID, item.link);
+                    console.log(item.link);
                 }
             }
         })
         addPageOfPaginator($)
-        console.log('объявлений:' + result.length)
-        console.log('status code ' + res.statusCode)
+        console.log('объявлений:' + result.length + '//'
+            + 'status code ' + res.statusCode + '//'
+            + 'ссылок в очереди: ' + q.length())
         callback()
     });
 }
 
 q.drain = () => {
     fs.writeFileSync(`./data/${getNameFile(URL)}.json`, JSON.stringify(result, null, 4))
-        console.log('The End')
+    result = []
+    console.log('The End')
 }
 
 module.exports = startCr

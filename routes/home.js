@@ -3,7 +3,6 @@ const router = Router()
 const Request = require('../models/request')
 const auth = require('../middleware/auth')
 const startCr = require('../modules/queue/queue')
-const stopParser = require('../modules/queue/queue')
 
 
 router.get('/', auth, async (req, res) => {

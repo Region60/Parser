@@ -1,16 +1,22 @@
-function getNameFile (url) {
-    let nameFile = url.slice(21).split('/').slice(0,2).join('_')
+function getNameFile(url) {
+    let nameFileFirstParts = url.slice(21).split('/')
 
-    function name () {
-        let nameFile1 = url.slice(21).split('/').pop()
-        if(nameFile1.includes('-')){
-            return nameFile1.split('-')[0]
-        }else {
-            return nameFile1.split('?')[0]
+
+    if (nameFileFirstParts.length === 2) {
+        nameFileFirstParts = nameFileFirstParts[0]
+    }else {
+        nameFileFirstParts = url.slice(21).split('/').slice(0, 2).join('-')
+    }
+    function name() {
+        let nameFileSecondParts = url.slice(21).split('/').pop()
+        if (nameFileSecondParts.includes('-')) {
+            return nameFileSecondParts.split('-')[0]
+        } else {
+            return nameFileSecondParts.split('?')[0]
         }
     }
 
-    return (nameFile +'_' + name())
+    return (nameFileFirstParts +'-'+ name())
 }
 
 module.exports = getNameFile
