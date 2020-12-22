@@ -232,23 +232,25 @@ body {
     left: 0;
 }
 
-.about {
+.services {
     padding: 50px 0px 30px;
 }
 
-.about__top {
+.services__top {
     display: flex;
     justify-content: space-between;
     margin-bottom: 60px;
 }
 
-.about__title-box {
+.services__title-box,
+.form__title-box{
     max-width: 520px;
     padding-left: 140px;
     position: relative;
 }
 
-.about__title-box:before {
+.services__title-box:before,
+.form__title-box:before{
     content: "";
     position: absolute;
     width: 100px;
@@ -258,7 +260,8 @@ body {
     top: 11px;
 }
 
-.about__title {
+.services__title,
+.form__title{
     font-size: 24px;
     font-weight: 500;
     line-height: 24px;
@@ -267,11 +270,12 @@ body {
     margin-bottom: 10px;
 }
 
-.about-text {
+.services__text,
+.form__text{
     letter-spacing: 0.1px;
 }
 
-.about__btn a { /*оборачиваем ссылку дивом,чтобы он взял на себя флексовые свойства*/
+.services__btn a { /*оборачиваем ссылку дивом,чтобы он взял на себя флексовые свойства*/
     color: #373636;
     line-height: 24px;
     letter-spacing: 0.25px;
@@ -279,12 +283,12 @@ body {
     border: 3px solid #e6e6e6;
 }
 
-.about__items {
+.services__items {
     display: flex;
     justify-content: space-between;
 }
 
-.about__item {
+.services__item {
     max-width: 360px;
    text-align: center;
     padding: 30px 0px 80px;
@@ -294,7 +298,7 @@ body {
     box-shadow: 0px 7px 24.3px 2.7px rgba(91, 89, 89, 0.14);
 }
 
-.about___item-title {
+.services__item-title {
  color: #212020;
     font-size: 18px;
     line-height: 24px;
@@ -303,31 +307,64 @@ body {
     padding: 24px 0;
 }
 
-.about__item-text {
+.services__item-text {
     letter-spacing: 0.1px;
     padding: 0px 30px 30px;
 
 }
 
-.about__item-btn {
+.services__item-btn {
     position: absolute;
     bottom: 40px;
     left: 0;
     right: 0;
 }
 
-.about__item-btn.default-btn {
+.services__item-btn .default-btn {
     color: #373636;
 }
 
-.about___item-btn.default-btn:after {
+.services__item-btn .default-btn:after {
     color: #fff;
 }
 
-.about__item-link {
+.services__item-link {
     color: #050505;
     font-family: 'Roboto', sens-serif;
     border-bottom: 1px solid #050505;
     margin-right: 60px;
 }
 
+.about {
+    background-image: url(../img/about-fon.jpg);
+    background-size: cover;
+    background-position:  center;
+    min-height: 300px;
+    background-repeat: no-repeat;
+    padding: 25px 0px 45px;
+}
+
+.about__inner {
+    max-width: 545px;
+}
+
+.about__title {
+    padding: 10px 0px 25px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    line-height: 24px;
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+
+.about__text {
+    margin-bottom: 30px;
+    letter-spacing: 0.1px;
+    line-height: 24px;
+    color: #d3d2d2;
+}
+
+.about__btn .default-btn:after {
+    color: #000;
+}
