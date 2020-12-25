@@ -236,21 +236,24 @@ body {
     padding: 50px 0px 30px;
 }
 
-.services__top {
+.services__top,
+.news__top {
     display: flex;
     justify-content: space-between;
     margin-bottom: 60px;
 }
 
 .services__title-box,
-.form__title-box {
+.form__title-box,
+.news__title-box {
     max-width: 520px;
     padding-left: 140px;
     position: relative;
 }
 
 .services__title-box:before,
-.form__title-box:before {
+.form__title-box:before,
+.news__title-box:before {
     content: "";
     position: absolute;
     width: 100px;
@@ -261,7 +264,8 @@ body {
 }
 
 .services__title,
-.form__title {
+.form__title,
+.news__title {
     font-size: 24px;
     font-weight: 500;
     line-height: 24px;
@@ -271,11 +275,13 @@ body {
 }
 
 .services__text,
-.form__text {
+.form__text,
+.news__text {
     letter-spacing: 0.1px;
 }
 
-.services__btn a { /*оборачиваем ссылку дивом,чтобы он взял на себя флексовые свойства*/
+.services__btn a,
+.news__btn a { /*оборачиваем ссылку дивом,чтобы он взял на себя флексовые свойства*/
     color: #373636;
     line-height: 24px;
     letter-spacing: 0.25px;
@@ -564,4 +570,50 @@ body {
     line-height: 24px;
     color: #d3d2d2;
     letter-spacing: normal;
+}
+
+.news {
+    padding: 55px 0px 110px;
+    background-color: #f9f9f9;
+}
+
+.news__inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.news__slider {
+    max-width: 555px;
+    width: 100%;
+    background-color: #fff;
+}
+
+.news__blog{
+    max-width: 260px;
+    width: 100%;
+}
+.news__images{
+    position:relative;
+}
+
+.news__date{
+    position: absolute;
+    background-color: #ffc222;
+    color: #fff;
+    height: 55px;
+    width: 50px;
+    top:-1px ;
+    left: 10px;
+    text-align: center;
+    padding-top:  30px;
+    font-weight: 700;
+}
+
+.news__blog-title {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.5px;
+    color: #242424;
+    padding: 12px 0;
 }
